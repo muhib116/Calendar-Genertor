@@ -20,13 +20,13 @@ export default function Master() {
   }
   
   return (
-    <div className={ [classes.main_wrapper, 'container grid items-start m-auto min-h-screen bg-slate-100'].join(' ') }>
-        <nav className={ ['container p-4 bg-white border-b px-10'].join(' ') }>
+    <div className={ [classes.main_wrapper, 'grid items-start m-auto min-h-screen bg-slate-100'].join(' ') }>
+        <nav className={ ['p-4 bg-white border-b px-10'].join(' ') }>
             <Navigation />
         </nav>
         <div className={ [
                 classes.leftSidebarAndMainContent, 
-                'container h-full gap-4',
+                'h-full gap-4',
                 isCalendarEditable && 'grid'
             ].join(' ') }
         >

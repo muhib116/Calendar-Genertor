@@ -31,7 +31,7 @@ const CalendarPreview = ({ currentMonth, currentYear, style={} }) =>
 
         <div className={ [ classes.body, calendarTheme === 'black' && 'bg-gray-800 text-white' ].join(' ') }>
           <div className='flex justify-between items-end px-6 py-4' style={ {backgroundColor: '#9992'} }>
-            <div className='font-medium italic text-xl'>{ listOfMonth[currentMonth][language] }</div>
+            <div className='font-medium italic text-xl capitalize'>{ listOfMonth[currentMonth][language] }</div>
             <div className='text-orangered-500 font-bold text-red-400 italic text-3xl'>{ currentYear }</div>
           </div>
 

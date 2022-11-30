@@ -1,6 +1,7 @@
 import calendarContext from "@/context/calendarContext"
 import { useContext } from "react"
 import { weeksList } from "./calendarData"
+import { cloneDeep } from "lodash"
 
 export default function useCalendar() 
 {
@@ -17,24 +18,13 @@ export default function useCalendar()
         let prevMonthLastDate    = new Date(currentYear, currentMonth, 0).getDate()
         const currentMonthFirstDayIndexAccordingToModifiedWeeks = weeks.english.findIndex(week => week == weeksList.english[currentMonthFirstDay])
 
-        // this code valid if week changeable or not
         for(let i=0; i < currentMonthFirstDayIndexAccordingToModifiedWeeks; i++){
             dateList.push({
-                date: prevMonthLastDate++,
+                date: (prevMonthLastDate-currentMonthFirstDayIndexAccordingToModifiedWeeks)+(i+1),
                 isActive: false,
                 isInactive: true
             })
         }
-
-        // this code valid if week day is not changeable
-        // for(let i = prevMonthLastDay; i >= 0; i--){
-        //     dateList.push({
-        //         date: prevMonthLastDate - i,
-        //         isActive: false,
-        //         isInactive: true
-        //     })
-        // }
-
 
         // work with current month -----
         const currentMonthLastDate = new Date(currentYear, currentMonth+1, 0).getDate()
@@ -68,10 +58,7 @@ export default function useCalendar()
     }
 
     const weekChanger = (weekIndex) => {
-        let myWeeks = { ...weeks }
-        
-        // const splicedWeeks = weeks['english'].splice(weekIndex)
-
+        let myWeeks = cloneDeep(weeksList)
         let modifiedWeeks = {}
         for(let language in myWeeks){
             let weeksInSingleLanguage = myWeeks[language]

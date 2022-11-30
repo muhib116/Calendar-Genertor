@@ -1,6 +1,7 @@
 import { useContext } from "react"
 import calendarContext from "../../../context/calendarContext"
 import fileLibraryIcon from '../../../assets/icons/file-library.png'
+import addTextIcon from '../../../assets/icons/text-add.png'
 
 export default function Navigation() {
   const { isCalendarEditable, setIsCalendarEditable } = useContext(calendarContext)
@@ -11,10 +12,14 @@ export default function Navigation() {
 
   return (
     <div className='flex justify-between'>
-      <div>
-        <button className="flex gap-1 items-center">
-          <img src={ fileLibraryIcon } className={ ['w-7 h-7 block'] } alt="" />
+      <div className="flex gap-4">
+        <button className="flex gap-2 items-center font-semibold">
+          <img src={ fileLibraryIcon } className={ ['w-5 h-5 block'] } alt="" />
           My Files
+        </button>
+        <button className="flex gap-2 items-center font-semibold">
+          <img src={ addTextIcon } className={ ['w-5 h-5 block'] } alt="" />
+          Add Text
         </button>
       </div>
       <div className='flex gap-4 items-center'>
