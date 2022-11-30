@@ -13,7 +13,7 @@ const CalendarPreview = ({ currentMonth, currentYear, style={} }) =>
 {
   const calendarContainer = useRef()
   const { getDateList } = useCalendar()
-  const { calendarTheme, setCalendarContainerElement, language, weeks } = useContext(calendarContext)
+  const { calendarImages, calendarTheme, setCalendarContainerElement, language, weeks } = useContext(calendarContext)
   useEffect(() => {
     setCalendarContainerElement(calendarContainer.current)
   })
@@ -24,7 +24,7 @@ const CalendarPreview = ({ currentMonth, currentYear, style={} }) =>
         <div className={ [classes.image].join(' ') }>
           <img 
             className='block w-full object-cover object-center'
-            src='https://images.unsplash.com/photo-1669403337099-5ebd653cc99b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80' 
+            src={ calendarImages.find(item=>item.name == listOfMonth[currentMonth]['english']).path }
             alt=""
           />
         </div>
@@ -53,7 +53,7 @@ const CalendarPreview = ({ currentMonth, currentYear, style={} }) =>
                     className={ [
                       classes.cell,
                       item.isInactive&&'opacity-30',
-                      item.isActive&&'bg-green-300',
+                      item.isActive&&'bg-red-400 font-bold',
                       'text-center px-2 py-2'
                     ].join(' ') } 
                     key={ 'cellKey-'+index }

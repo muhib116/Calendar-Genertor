@@ -1,6 +1,8 @@
-import { weeksList } from "@/Components/calendar/calendarData"
+import { weeksList, DemoImageListForCalendar } from "@/Components/calendar/calendarData"
 import { useState } from "react"
 import CalendarContext from "./calendarContext"
+import { cloneDeep } from 'lodash'
+
 const CalendarState = ({ children }) => {
     const [currentYear, setCurrentYear] = useState(new Date().getFullYear())
     const [currentMonth, setCurrentMonth] = useState(new Date().getMonth())
@@ -10,14 +12,8 @@ const CalendarState = ({ children }) => {
     const [calendarContainerElement, setCalendarContainerElement] = useState('')
     const [language, setLanguage] = useState('english')
     const [activeWeekIndex, setActiveWeekIndex] = useState(0)
-    
-    
-    // this weeks data also available in calendarData.js
-    const [weeks, setWeeks] = useState({
-      english: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-      spanish: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
-      french: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi']
-    })
+    const [weeks, setWeeks] = useState(cloneDeep(weeksList))
+    const [calendarImages, setCalendarImages] = useState(cloneDeep(DemoImageListForCalendar))
 
     return (
         <CalendarContext.Provider 
@@ -31,6 +27,7 @@ const CalendarState = ({ children }) => {
               language,
               weeks,
               activeWeekIndex,
+              calendarImages,
               setCurrentYear, 
               setDateList, 
               setCurrentMonth,
@@ -39,7 +36,8 @@ const CalendarState = ({ children }) => {
               setCalendarContainerElement,
               setLanguage,
               setWeeks,
-              setActiveWeekIndex
+              setActiveWeekIndex,
+              setCalendarImages
             }}
         >
             { children }
