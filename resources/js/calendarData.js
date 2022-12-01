@@ -129,11 +129,11 @@ const DemoImageListForCalendar = [
 
 
 // create year list start------
-let currentYear = new Date().getFullYear()
-let nextYearLimit = currentYear + 1
+let selectedYear = new Date().getFullYear()
+let nextYearLimit = selectedYear + 1
 
-for(currentYear; currentYear <= nextYearLimit; currentYear++){
-    yearList.push(currentYear)
+for(selectedYear; selectedYear <= nextYearLimit; selectedYear++){
+    yearList.push(selectedYear)
 }
 
 

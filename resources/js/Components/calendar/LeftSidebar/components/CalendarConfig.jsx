@@ -1,16 +1,16 @@
 import { useContext } from 'react'
 import calendarContext from '../../../../context/calendarContext'
 import calendarIcon from '../../../../assets/icons/calendar.png'
-import { weeksList, languageList, yearList } from '../../calendarData'
+import { weeksList, languageList, yearList } from '../../../../calendarData'
 import useCalendar from '../../useCalendar'
 
 export default function CalendarConfig() {
     const { 
         calendarTheme, 
         setCalendarTheme, 
-        currentMonth,
-        currentYear,
-        setCurrentYear, 
+        selectedMonth,
+        selectedYear,
+        setSelectedYear, 
         language, 
         setLanguage, 
         activeWeekIndex, 
@@ -18,7 +18,7 @@ export default function CalendarConfig() {
     } = useContext(calendarContext)
 
     const handleYear = (e) => {
-        setCurrentYear(e.target.value)
+        setSelectedYear(e.target.value)
     }
     const { weekChanger, getDateList } = useCalendar()
     
@@ -31,7 +31,7 @@ export default function CalendarConfig() {
                 <select 
                     onChange={ handleYear } 
                     className={ ['bg-transparent rounded border px-2 py-1'].join(' ') }
-                    value={ currentYear }
+                    value={ selectedYear }
                 >
                     {
                         yearList.map((year) => (
@@ -51,7 +51,7 @@ export default function CalendarConfig() {
                         let weekIndex = e.target.value
                         setActiveWeekIndex(weekIndex)
                         weekChanger(weekIndex)
-                        getDateList(currentMonth, currentYear)
+                        getDateList(selectedMonth, selectedYear)
                     }}
                     className={ ['bg-transparent rounded border px-2 py-1'].join(' ') }
                     value={ activeWeekIndex }

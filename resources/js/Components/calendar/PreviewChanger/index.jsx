@@ -5,12 +5,12 @@ import CoverPage from '../CalendarPreview/CoverPage'
 import BackPage from '../CalendarPreview/BackPage'
 import whiteCalendar from '../../../assets/white-calendar.png'
 import blackCalendar from '../../../assets/black-calendar.png'
-import { listOfMonth } from '../calendarData'
+import { listOfMonth } from '../../../calendarData'
 
 const PreviewChanger = () => {
-  const { currentYear, currentMonth, calendarTheme, setCurrentMonth, language } = useContext(calendarContext)
+  const { calendarImages, selectedYear, selectedMonth, calendarTheme, setSelectedMonth, language } = useContext(calendarContext)
   const handleMonth = (index) => {
-    setCurrentMonth(index)
+    setSelectedMonth(index)
   }
 
   return (
@@ -18,10 +18,10 @@ const PreviewChanger = () => {
       <div 
         onClick={ () => handleMonth(-1) } 
         className={ ['cursor-pointer p-1 text-center grid items-end border rounded hover:shadow active:scale-95',
-          (currentMonth === -1) && 'shadow scale-95 border-red-500'
+          (selectedMonth === -1) && 'shadow scale-95 border-red-500'
         ].join(' ') }
       >
-        <CoverPage />
+        <CoverPage img={ calendarImages.find(item=>item.name == 'cover').path } />
         Cover
       </div>
       {
@@ -31,24 +31,24 @@ const PreviewChanger = () => {
             key={ 'previewChangerKey-'+index } 
             className={ [
               'cursor-pointer p-1 text-center grid items-end border hover:shadow-md active:scale-95 rounded',
-              (currentMonth === index) && 'shadow scale-95 border-red-500'
+              (selectedMonth === index) && 'shadow scale-95 border-red-500'
             ].join(' ') } 
           >
             <img 
               src={ calendarTheme == 'white' ? whiteCalendar : blackCalendar } 
               alt="" 
             />
-            { item[language].slice(0, 3) } - { currentYear }
+            { item[language].slice(0, 3) } - { selectedYear }
           </div>
         ))
       }
       <div 
         onClick={ () => handleMonth(12) } 
         className={ ['cursor-pointer p-1 text-center grid items-end border rounded hover:shadow active:scale-95',
-          (currentMonth === 12) && 'shadow scale-95 border-red-500'
+          (selectedMonth === 12) && 'shadow scale-95 border-red-500'
         ].join(' ') }
       >
-        <BackPage />
+        <BackPage img={ calendarImages.find(item=>item.name == 'back').path } />
         Back
       </div>
     </div>

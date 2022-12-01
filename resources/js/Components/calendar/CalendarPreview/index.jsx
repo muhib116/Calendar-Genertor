@@ -1,15 +1,13 @@
 import classes from './index.module.css'
-// import * as htmlToImage from 'html-to-image';
-import { listOfMonth } from '../calendarData';
+import { listOfMonth } from '../../../calendarData';
 import useCalendar from '../useCalendar';
 import { useContext } from 'react';
 import calendarContext from '../../../context/calendarContext';
 import { useRef } from 'react';
 import { useEffect } from 'react';
-import { memo } from 'react';
 
 
-const CalendarPreview = ({ currentMonth, currentYear, style={} }) =>
+const CalendarPreview = ({ img, selectedMonth, selectedYear, style={} }) =>
 {
   const calendarContainer = useRef()
   const { getDateList } = useCalendar()
@@ -24,15 +22,15 @@ const CalendarPreview = ({ currentMonth, currentYear, style={} }) =>
         <div className={ [classes.image].join(' ') }>
           <img 
             className='block w-full object-cover object-center'
-            src={ calendarImages.find(item=>item.name == listOfMonth[currentMonth]['english']).path }
+            src={ img }
             alt=""
           />
         </div>
 
         <div className={ [ classes.body, calendarTheme === 'black' && 'bg-gray-800 text-white' ].join(' ') }>
           <div className='flex justify-between items-end px-6 py-4' style={ {backgroundColor: '#9992'} }>
-            <div className='font-medium italic text-xl capitalize'>{ listOfMonth[currentMonth][language] }</div>
-            <div className='text-orangered-500 font-bold text-red-400 italic text-3xl'>{ currentYear }</div>
+            <div className='font-medium italic text-xl capitalize'>{ listOfMonth[selectedMonth][language] }</div>
+            <div className='text-orangered-500 font-bold text-red-400 italic text-3xl'>{ selectedYear }</div>
           </div>
 
           <div className={ ['p-4 pt-0 text-xs'].join(' ') }>
@@ -48,7 +46,7 @@ const CalendarPreview = ({ currentMonth, currentYear, style={} }) =>
 
             <div className='grid grid-cols-7'>
               {
-                getDateList(currentMonth, currentYear).map((item, index) => (
+                getDateList(selectedMonth, selectedYear).map((item, index) => (
                   <span 
                     className={ [
                       classes.cell,
@@ -73,4 +71,4 @@ const CalendarPreview = ({ currentMonth, currentYear, style={} }) =>
 }
 
 
-export default memo(CalendarPreview)
+export default CalendarPreview

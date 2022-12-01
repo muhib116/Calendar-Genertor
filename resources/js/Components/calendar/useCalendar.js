@@ -1,38 +1,41 @@
 import calendarContext from "@/context/calendarContext"
 import { useContext } from "react"
-import { weeksList } from "./calendarData"
+import { weeksList } from "@/calendarData"
 import { cloneDeep } from "lodash"
+import { usePage } from '@inertiajs/inertia-react'
+import { Inertia } from "@inertiajs/inertia"
+
 
 export default function useCalendar() 
 {
-    const { weeks, setWeeks } = useContext(calendarContext)
-
-    const getDateList = (currentMonth, currentYear) => 
+    const { selectedWeek, setSelectedWeek, calendarTheme, calendarImages, selectedMonth, selectedYear, weeks, setWeeks, language } = useContext(calendarContext)
+    const { auth } = usePage().props
+    const getDateList = (selectedMonth, selectedYear) => 
     {
         // Note: month and week index start from 0
         const dateList = []
 
         // work with previous month---
-        let prevMonthLastDay = new Date(currentYear, currentMonth, 0).getDay()
-        let currentMonthFirstDay = new Date(currentYear, currentMonth, 1).getDay()
-        let prevMonthLastDate    = new Date(currentYear, currentMonth, 0).getDate()
-        const currentMonthFirstDayIndexAccordingToModifiedWeeks = weeks.english.findIndex(week => week == weeksList.english[currentMonthFirstDay])
+        let prevMonthLastDay = new Date(selectedYear, selectedMonth, 0).getDay()
+        let selectedMonthFirstDay = new Date(selectedYear, selectedMonth, 1).getDay()
+        let prevMonthLastDate    = new Date(selectedYear, selectedMonth, 0).getDate()
+        const selectedMonthFirstDayIndexAccordingToModifiedWeeks = weeks.english.findIndex(week => week == weeksList.english[selectedMonthFirstDay])
 
-        for(let i=0; i < currentMonthFirstDayIndexAccordingToModifiedWeeks; i++){
+        for(let i=0; i < selectedMonthFirstDayIndexAccordingToModifiedWeeks; i++){
             dateList.push({
-                date: (prevMonthLastDate-currentMonthFirstDayIndexAccordingToModifiedWeeks)+(i+1),
+                date: (prevMonthLastDate-selectedMonthFirstDayIndexAccordingToModifiedWeeks)+(i+1),
                 isActive: false,
                 isInactive: true
             })
         }
 
         // work with current month -----
-        const currentMonthLastDate = new Date(currentYear, currentMonth+1, 0).getDate()
-        for(let i = 1; i <= currentMonthLastDate; i++)
+        const selectedMonthLastDate = new Date(selectedYear, selectedMonth+1, 0).getDate()
+        for(let i = 1; i <= selectedMonthLastDate; i++)
         {
             let isActive = false
             let date = new Date()
-            if(date.getFullYear() === currentYear && date.getMonth() === currentMonth && date.getDate() === i){
+            if(date.getFullYear() === selectedYear && date.getMonth() === selectedMonth && date.getDate() === i){
                 isActive = true
             }
 
@@ -44,9 +47,9 @@ export default function useCalendar()
         }
         
         // work with next month -----
-        const currentMonthLastDay = new Date(currentYear, currentMonth+1, 0).getDay()
-        const currentMonthLastDayIndexAccordingToModifiedWeeks = weeks.english.findIndex(week => week == weeksList.english[currentMonthLastDay])
-        for(let i = 1; i < (7 - currentMonthLastDayIndexAccordingToModifiedWeeks); i++){
+        const selectedMonthLastDay = new Date(selectedYear, selectedMonth+1, 0).getDay()
+        const selectedMonthLastDayIndexAccordingToModifiedWeeks = weeks.english.findIndex(week => week == weeksList.english[selectedMonthLastDay])
+        for(let i = 1; i < (7 - selectedMonthLastDayIndexAccordingToModifiedWeeks); i++){
             dateList.push({
                 date: i,
                 isActive: false,
@@ -65,12 +68,29 @@ export default function useCalendar()
             let splicedWeeks = weeksInSingleLanguage.splice(weekIndex)
             modifiedWeeks[language] = (splicedWeeks.concat(weeksInSingleLanguage))
         }
-
+        setSelectedWeek(weekIndex)
         setWeeks(modifiedWeeks)
+    }
+
+    const saveCalendar = () => 
+    {
+        let data = {
+            user_id: auth.user.id,
+            year: selectedYear,
+            month: selectedMonth,
+            language,
+            week: selectedWeek,
+            theme: calendarTheme,
+            settings: calendarImages
+
+        }
+
+        Inertia.post(route('calendar_save', data))
     }
 
     return {
         getDateList,
-        weekChanger
+        weekChanger,
+        saveCalendar
     }
 }

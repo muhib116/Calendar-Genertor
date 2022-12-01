@@ -1,23 +1,23 @@
 import calendarContext from '@/context/calendarContext'
 import { useContext } from 'react'
-import { DemoImages, listOfMonth } from '../../calendarData'
+import { DemoImages, listOfMonth } from '../../../../calendarData'
 import { cloneDeep, get, isEmpty } from 'lodash'
 
 export default function Media() {
-    const { currentMonth, calendarImages, setCalendarImages } = useContext(calendarContext)
+    const { selectedMonth, calendarImages, setCalendarImages } = useContext(calendarContext)
     const handleImage = (image) => {
-        let monthName = get(listOfMonth, `${currentMonth}.english`)
+        let monthName = get(listOfMonth, `${selectedMonth}.english`)
         let myCalendarImages = cloneDeep(calendarImages)
         let filteredImageData = {}
 
         if(monthName){
             filteredImageData = myCalendarImages.find(img => img.name == monthName)
         }else{
-            if(currentMonth == '-1'){
+            if(selectedMonth == '-1'){
                 // cover photo
                 filteredImageData = myCalendarImages.find(img => img.name == 'cover')
             }
-            if(currentMonth == '12'){
+            if(selectedMonth == '12'){
                 // back photo
                 filteredImageData = myCalendarImages.find(img => img.name == 'back')
             }

@@ -1,7 +1,5 @@
 import classes from './index.module.css'
 import LeftSidebar from '../../Components/calendar/LeftSidebar'
-
-
 import CalendarPreview from '../../Components/calendar/CalendarPreview'
 import PreviewChanger from '../../Components/calendar/PreviewChanger'
 import Navigation from '../../Components/calendar/Navigation'
@@ -10,19 +8,27 @@ import { useContext } from 'react'
 import AngleIcon from '../../assets/icons/AngleIcon'
 import CoverPage from '../../Components/calendar/CalendarPreview/CoverPage'
 import BackPage from '../../Components/calendar/CalendarPreview/BackPage'
+import { listOfMonth } from '@/calendarData'
 
 export default function Master() {
-  const { isCalendarEditable, currentMonth, currentYear, setCurrentMonth } = useContext(calendarContext)
-  const handleMonth = (direction) => {
-      if((currentMonth + direction) >= -1 && (currentMonth + direction) <= 12){
-        setCurrentMonth(currentMonth + direction)
-      }
-  }
+    const { 
+        calendarImages, 
+        isCalendarEditable, 
+        selectedMonth, 
+        selectedYear, 
+        setSelectedMonth
+    } = useContext(calendarContext)
+
+    const handleMonth = (direction) => {
+        if((selectedMonth + direction) >= -1 && (selectedMonth + direction) <= 12){
+            setSelectedMonth(selectedMonth + direction)
+        }
+    }
   
   return (
     <div className={ [classes.main_wrapper, 'grid items-start m-auto min-h-screen bg-slate-100'].join(' ') }>
-        <nav className={ ['p-4 bg-white border-b px-10'].join(' ') }>
-            <Navigation />
+        <nav className={ ['p-4 bg-white border-b px-10 z-50 sticky top-0'].join(' ') }>
+            <Navigation page='calendar' />
         </nav>
         <div className={ [
                 classes.leftSidebarAndMainContent, 
@@ -46,16 +52,20 @@ export default function Master() {
 
                     <div className={[classes.calendar_container].join(' ')}>
                         {
-                            (currentMonth === -1) &&
-                            <CoverPage />
+                            (selectedMonth === -1) &&
+                            <CoverPage img={ calendarImages.find(item=>item.name == 'cover').path } />
                         }
                         {
-                            (currentMonth >= 0 && currentMonth<=11) &&
-                            <CalendarPreview currentMonth={ currentMonth } currentYear={ currentYear } />
+                            (selectedMonth >= 0 && selectedMonth<=11) &&
+                            <CalendarPreview 
+                                img={ calendarImages.find(item=>item.name == listOfMonth[selectedMonth]['english']).path }
+                                selectedMonth={ selectedMonth } 
+                                selectedYear={ selectedYear } 
+                            />
                         }
                         {
-                            (currentMonth === 12) &&
-                            <BackPage />
+                            (selectedMonth === 12) &&
+                            <BackPage img={ calendarImages.find(item=>item.name == 'back').path } />
                         }
                     </div>
                 </div>

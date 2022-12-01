@@ -1,26 +1,28 @@
-import { weeksList, DemoImageListForCalendar } from "@/Components/calendar/calendarData"
+import { weeksList, DemoImageListForCalendar } from "@/calendarData"
 import { useState } from "react"
 import CalendarContext from "./calendarContext"
 import { cloneDeep } from 'lodash'
 
 const CalendarState = ({ children }) => {
-    const [currentYear, setCurrentYear] = useState(new Date().getFullYear())
-    const [currentMonth, setCurrentMonth] = useState(new Date().getMonth())
+    const [selectedYear, setSelectedYear] = useState(new Date().getFullYear())
+    const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth())
     const [dateList, setDateList] = useState([])
     const [isCalendarEditable, setIsCalendarEditable] = useState(true)
     const [calendarTheme, setCalendarTheme] = useState('black')
     const [calendarContainerElement, setCalendarContainerElement] = useState('')
     const [language, setLanguage] = useState('english')
     const [activeWeekIndex, setActiveWeekIndex] = useState(0)
+    const [selectedWeek, setSelectedWeek] = useState(0)
     const [weeks, setWeeks] = useState(cloneDeep(weeksList))
     const [calendarImages, setCalendarImages] = useState(cloneDeep(DemoImageListForCalendar))
+    const [leftSideComponentName, setLeftSideComponentName] = useState('CalendarConfig')
 
     return (
         <CalendarContext.Provider 
             value={{ 
-              currentYear, 
+              selectedYear, 
               dateList, 
-              currentMonth,
+              selectedMonth,
               calendarTheme, 
               isCalendarEditable,
               calendarContainerElement,
@@ -28,16 +30,20 @@ const CalendarState = ({ children }) => {
               weeks,
               activeWeekIndex,
               calendarImages,
-              setCurrentYear, 
+              leftSideComponentName,
+              selectedWeek,
+              setSelectedYear, 
               setDateList, 
-              setCurrentMonth,
+              setSelectedMonth,
               setCalendarTheme,
               setIsCalendarEditable,
               setCalendarContainerElement,
               setLanguage,
               setWeeks,
               setActiveWeekIndex,
-              setCalendarImages
+              setCalendarImages,
+              setLeftSideComponentName,
+              setSelectedWeek,
             }}
         >
             { children }
