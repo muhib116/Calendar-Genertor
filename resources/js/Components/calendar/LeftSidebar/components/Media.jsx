@@ -1,52 +1,48 @@
 import calendarContext from '@/context/calendarContext'
-import { useContext } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { DemoImages, listOfMonth } from '../../../../calendarData'
-import { cloneDeep, get, isEmpty } from 'lodash'
+import FileUpload from '@/Components/FileUpload'
+import useMedia from '@/Components/useMedia'
+
 
 export default function Media() {
-    const { selectedMonth, calendarImages, setCalendarImages } = useContext(calendarContext)
-    const handleImage = (image) => {
-        let monthName = get(listOfMonth, `${selectedMonth}.english`)
-        let myCalendarImages = cloneDeep(calendarImages)
-        let filteredImageData = {}
+    const { media } = useContext(calendarContext)
+    const { getMedia, deleteMedia, handleImage } = useMedia()
 
-        if(monthName){
-            filteredImageData = myCalendarImages.find(img => img.name == monthName)
-        }else{
-            if(selectedMonth == '-1'){
-                // cover photo
-                filteredImageData = myCalendarImages.find(img => img.name == 'cover')
-            }
-            if(selectedMonth == '12'){
-                // back photo
-                filteredImageData = myCalendarImages.find(img => img.name == 'back')
-            }
-        }
-        
-        if(isEmpty(filteredImageData)) return
-
-        filteredImageData.path = image
-        setCalendarImages(myCalendarImages)
-    }
+    useEffect(() => {
+        getMedia()
+    }, [])
 
     return (
-        <>
-            <div className='grid justify-center'>
-                <label className={ ['bg-green-500 px-5 py-1 mb-6 font-semibold cursor-pointer text-white rounded shadow mx-auto inline-block'].join(' ') }>
-                    + Upload File
-                    <input type="file" hidden />
-                </label>
-            </div>
+        <div>
+            <FileUpload />
 
+            <p className='mb-3 font-semibold text-lg'>Library</p>
             <div className='gap-3 grid grid-cols-3 content-start overflow-y-auto' style={{ height: '930px' }}>
                 {
-                    DemoImages.map((image, index) => (
-                        <div onClick={ () => handleImage(image) } key={ 'img-'+index } className='cursor-pointer h-20 hover:brightness-75'>
-                            <img className="block w-full h-full object-cover object-center" src={image} />
+                    // DemoImages.map((image, index) => (
+                        media.map((image, index) => (
+                        <div 
+                            onClick={ () => handleImage(image.path) } key={ 'img-'+index } 
+                            className='relative cursor-pointer h-20 bg-gray-200 overflow-hidden'
+                        >
+                            <button 
+                                className='absolute z-10 bg-[#ff3b04] text-white block w-6 h-6 scale-90 right-0 opacity-90 hover:opacity-100 hover:shadow-lg' 
+                                onClick={ () => {
+                                    if(confirm("Are you sure to delete this?")){
+                                        deleteMedia(image.id)
+                                    }
+                                }}
+                            >
+                                <svg>
+                                    <path fill="none" stroke="currentColor" strokeWidth="2" d="M7,7 L17,17 M7,17 L17,7"/>
+                                </svg>
+                            </button>
+                            <img className="block w-full h-full object-cover object-center hover:scale-110 hover:rotate-3 transition" src={image.path} />
                         </div>
                     ))
                 }
             </div>
-        </>
+        </div>
     )
 }

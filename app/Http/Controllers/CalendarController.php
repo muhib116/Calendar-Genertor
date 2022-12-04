@@ -28,4 +28,21 @@ class CalendarController extends Controller
 
         return \Redirect::route('my_calendars');
     }
+
+    function update(Request $request) {
+        $data = $request->all();
+
+        $payload = [
+            'year' => $data['year'],
+            'month' => $data['month'],
+            'language' => $data['language'],
+            'week' => $data['week'],
+            'theme' => $data['theme'],
+            'settings' => json_encode($data['settings']),
+        ];
+        
+        Calendar::where(['id' => $request->id])->where(['user_id' => $request->user_id])->update($payload);
+
+        return \Redirect::back();
+    }
 }

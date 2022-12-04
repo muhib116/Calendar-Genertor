@@ -8,11 +8,11 @@ import { Link } from "@inertiajs/inertia-react"
 
 
 export default function Navigation({ page }) {
-  const { isCalendarEditable, setIsCalendarEditable, setLeftSideComponentName } = useContext(calendarContext)
-  const { saveCalendar } = useCalendar()
+  const { isCalendarEditable, setIsPreview, isPreview, setLeftSideComponentName } = useContext(calendarContext)
+  const { saveCalendar, updateCalendar } = useCalendar()
 
   const handlePreview = () => {
-    setIsCalendarEditable(!isCalendarEditable)
+    setIsPreview(!isPreview)
   }
 
   return (
@@ -45,9 +45,17 @@ export default function Navigation({ page }) {
           page == 'calendar' &&
           <>
             <button onClick={ handlePreview }>Preview</button>
-            <button onClick={ saveCalendar } className='bg-green-500 text-white rounded-full shadow py-1 px-4'>Save</button>
+
+            {
+              isCalendarEditable ?
+              <button onClick={ updateCalendar } className='bg-blue-500 text-white rounded-full shadow py-1 px-4'>Update</button>
+              :
+              <button onClick={ saveCalendar } className='bg-green-500 text-white rounded-full shadow py-1 px-4'>Save</button>
+            }
           </>
         }
+        
+
 
         {
           page != 'calendar' &&

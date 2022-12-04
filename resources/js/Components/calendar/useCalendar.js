@@ -8,7 +8,7 @@ import { Inertia } from "@inertiajs/inertia"
 
 export default function useCalendar() 
 {
-    const { selectedWeek, setSelectedWeek, calendarTheme, calendarImages, selectedMonth, selectedYear, weeks, setWeeks, language } = useContext(calendarContext)
+    const { serverData, activeWeekIndex, setSelectedWeek, calendarTheme, calendarImages, selectedMonth, selectedYear, weeks, setWeeks, language } = useContext(calendarContext)
     const { auth } = usePage().props
     const getDateList = (selectedMonth, selectedYear) => 
     {
@@ -79,7 +79,7 @@ export default function useCalendar()
             year: selectedYear,
             month: selectedMonth,
             language,
-            week: selectedWeek,
+            week: activeWeekIndex,
             theme: calendarTheme,
             settings: calendarImages
 
@@ -88,9 +88,26 @@ export default function useCalendar()
         Inertia.post(route('calendar_save', data))
     }
 
+    const updateCalendar = () => {
+        let data = {
+            id: serverData.id,
+            user_id: auth.user.id,
+            year: selectedYear,
+            month: selectedMonth,
+            language,
+            week: activeWeekIndex,
+            theme: calendarTheme,
+            settings: calendarImages
+
+        }
+
+        Inertia.post(route('calendar_update', data))
+    }
+
     return {
         getDateList,
         weekChanger,
-        saveCalendar
+        saveCalendar,
+        updateCalendar
     }
 }

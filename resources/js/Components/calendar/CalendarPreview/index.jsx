@@ -20,11 +20,14 @@ const CalendarPreview = ({ img, selectedMonth, selectedYear, style={} }) =>
     <div className={ [classes.wrapper, 'h-full'].join(' ') } ref={ calendarContainer }>
       <div className={ [classes.calendar, 'shadow h-full'].join(' ') }>
         <div className={ [classes.image].join(' ') }>
-          <img 
-            className='block w-full object-cover object-center'
-            src={ img }
-            alt=""
-          />
+          {
+            img != '' &&
+            <img 
+              className='block w-full object-cover object-center'
+              src={ img }
+              alt=""
+            />
+          }
         </div>
 
         <div className={ [ classes.body, calendarTheme === 'black' && 'bg-gray-800 text-white' ].join(' ') }>

@@ -7,11 +7,14 @@ export default function CoverPage({ img }) {
   return (
     <div className={ [classes.cover_photo, classes.wrapper, 'h-full'].join(' ') }>
       <div className={ [classes.calendar, 'shadow h-full'].join(' ') }>
-        <img 
-          className={ [classes.back_image, 'h-full w-full block object-cover object-center'].join(' ') }
-          src={ img }
-          alt='' 
-        />
+        {
+          img != '' &&
+          <img 
+            className={ [classes.back_image, 'h-full w-full block object-cover object-center'].join(' ') }
+            src={ img }
+            alt='' 
+          />
+        }
       </div>
     </div>
   )

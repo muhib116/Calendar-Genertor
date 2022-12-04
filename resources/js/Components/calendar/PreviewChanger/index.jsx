@@ -21,7 +21,7 @@ const PreviewChanger = () => {
           (selectedMonth === -1) && 'shadow scale-95 border-red-500'
         ].join(' ') }
       >
-        <CoverPage img={ calendarImages.find(item=>item.name == 'cover').path } />
+        <CoverPage img={ calendarImages.length>0 ? calendarImages.find(item=>item.name == 'cover').path : '' } />
         Cover
       </div>
       {
@@ -48,7 +48,7 @@ const PreviewChanger = () => {
           (selectedMonth === 12) && 'shadow scale-95 border-red-500'
         ].join(' ') }
       >
-        <BackPage img={ calendarImages.find(item=>item.name == 'back').path } />
+        <BackPage img={ calendarImages.length>0 ? calendarImages.find(item=>item.name == 'back').path : '' } />
         Back
       </div>
     </div>

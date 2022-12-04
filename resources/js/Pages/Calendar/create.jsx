@@ -13,7 +13,7 @@ import { listOfMonth } from '@/calendarData'
 export default function Master() {
     const { 
         calendarImages, 
-        isCalendarEditable, 
+        isPreview, 
         selectedMonth, 
         selectedYear, 
         setSelectedMonth
@@ -33,11 +33,11 @@ export default function Master() {
         <div className={ [
                 classes.leftSidebarAndMainContent, 
                 'h-full gap-4',
-                isCalendarEditable && 'grid'
+                isPreview && 'grid'
             ].join(' ') }
         >
             {
-                isCalendarEditable && 
+                isPreview && 
                 <div className={ [classes.left_sidebar, 'p-4 h-full bg-white'].join(' ') }>
                     <LeftSidebar />
                 </div>
@@ -53,19 +53,19 @@ export default function Master() {
                     <div className={[classes.calendar_container].join(' ')}>
                         {
                             (selectedMonth === -1) &&
-                            <CoverPage img={ calendarImages.find(item=>item.name == 'cover').path } />
+                            <CoverPage img={ calendarImages.length>0 ? calendarImages.find(item=>item.name == 'cover').path : '' } />
                         }
                         {
                             (selectedMonth >= 0 && selectedMonth<=11) &&
                             <CalendarPreview 
-                                img={ calendarImages.find(item=>item.name == listOfMonth[selectedMonth]['english']).path }
+                                img={ calendarImages.length>0 ? calendarImages.find(item=>item.name == listOfMonth[selectedMonth]['english']).path : '' }
                                 selectedMonth={ selectedMonth } 
                                 selectedYear={ selectedYear } 
                             />
                         }
                         {
                             (selectedMonth === 12) &&
-                            <BackPage img={ calendarImages.find(item=>item.name == 'back').path } />
+                            <BackPage img={ calendarImages.length>0 ? calendarImages.find(item=>item.name == 'back').path : '' } />
                         }
                     </div>
                 </div>
