@@ -4,6 +4,7 @@ import { weeksList } from "@/calendarData"
 import { cloneDeep } from "lodash"
 import { usePage } from '@inertiajs/inertia-react'
 import { Inertia } from "@inertiajs/inertia"
+import { toast } from "react-toastify"
 
 
 export default function useCalendar() 
@@ -86,6 +87,16 @@ export default function useCalendar()
         }
 
         Inertia.post(route('calendar_save', data))
+        toast.success('Calendar Saved !', {
+            position: "top-right",
+            autoClose: 4000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        })
     }
 
     const updateCalendar = () => {
@@ -102,12 +113,38 @@ export default function useCalendar()
         }
 
         Inertia.post(route('calendar_update', data))
+        toast.success('Calendar Updated !', {
+            position: "top-right",
+            autoClose: 4000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        })
+    }
+
+    const updateCalendarPrice = (price, id) => {
+        let data = {
+            user_id: auth.user.id,
+            id,
+            price
+        }
+
+        Inertia.post(route('calendar_update', data))
+    }
+
+    const deleteCalendar = (calendar_id) => {
+        Inertia.delete(route('calendar_delete', calendar_id))
     }
 
     return {
         getDateList,
         weekChanger,
         saveCalendar,
-        updateCalendar
+        updateCalendar,
+        deleteCalendar,
+        updateCalendarPrice
     }
 }

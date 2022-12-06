@@ -23,7 +23,7 @@ class CalendarController extends Controller
         $calendar->language = $data['language'];
         $calendar->week = $data['week'];
         $calendar->theme = $data['theme'];
-        $calendar->settings = json_encode($data['settings']);
+        $calendar->settings = array_key_exists('settings', $data) ? json_encode($data['settings']) : json_encode([]);
         $calendar->save();
 
         return \Redirect::route('my_calendars');
@@ -32,17 +32,31 @@ class CalendarController extends Controller
     function update(Request $request) {
         $data = $request->all();
 
-        $payload = [
-            'year' => $data['year'],
-            'month' => $data['month'],
-            'language' => $data['language'],
-            'week' => $data['week'],
-            'theme' => $data['theme'],
-            'settings' => json_encode($data['settings']),
-        ];
+        $payload = [];
+        if($data['price']>=0){
+            $payload = [
+                'price' => $data['price']
+            ];
+        }else{
+            $payload = [
+                'year' => $data['year'],
+                'month' => $data['month'],
+                'language' => $data['language'],
+                'week' => $data['week'],
+                'theme' => $data['theme'],
+                'settings' => $data['settings'] && json_encode($data['settings']),
+            ];
+        }
         
-        Calendar::where(['id' => $request->id])->where(['user_id' => $request->user_id])->update($payload);
+        if(count($payload)){
+            Calendar::where(['id' => $request->id])->where(['user_id' => $request->user_id])->update($payload);
+        }
 
         return \Redirect::back();
+    }
+
+    function delete($calendar_id){
+        Calendar::where(['id' => $calendar_id])->delete();
+        return redirect()->back();
     }
 }

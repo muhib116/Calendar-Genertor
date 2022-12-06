@@ -26,6 +26,10 @@ Route::post('/edit-calendar/{id}/{user_id}', [CalendarController::class, 'update
     ->middleware(['auth', 'verified'])
     ->name('calendar_update');
 
+Route::delete('/delete/{calendar_id}', [CalendarController::class, 'delete'])
+    ->middleware(['auth', 'verified'])
+    ->name('calendar_delete');
+
 
 Route::post('/file-upload', [fileUploadController::class, 'fileUpload'])
     ->middleware(['auth', 'verified'])
