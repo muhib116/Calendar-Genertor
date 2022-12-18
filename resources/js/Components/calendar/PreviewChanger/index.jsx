@@ -5,7 +5,9 @@ import CoverPage from '../CalendarPreview/CoverPage'
 import BackPage from '../CalendarPreview/BackPage'
 import whiteCalendar from '../../../assets/white-calendar.png'
 import blackCalendar from '../../../assets/black-calendar.png'
+import CalendarPreview from '@/Components/calendar/CalendarPreview/index'
 import { listOfMonth } from '../../../calendarData'
+
 
 const PreviewChanger = () => {
   const { calendarImages, selectedYear, selectedMonth, calendarTheme, setSelectedMonth, language } = useContext(calendarContext)
@@ -21,7 +23,16 @@ const PreviewChanger = () => {
           (selectedMonth === -1) && 'shadow scale-95 border-red-500'
         ].join(' ') }
       >
-        <CoverPage img={ calendarImages.length>0 ? calendarImages.find(item=>item.name == 'cover').path : '' } />
+        <div className='w-full h-[104px] overflow-hidden'>
+          <CoverPage 
+            img={ calendarImages.length>0 ? calendarImages.find(item=>item.name == 'cover').path : '' }
+            style={{ 
+              transform: 'scale(0.14)',
+              transformOrigin: 'left top',
+              height: '700px'
+            }}
+          />
+        </div>
         Cover
       </div>
       {
@@ -34,10 +45,20 @@ const PreviewChanger = () => {
               (selectedMonth === index) && 'shadow scale-95 border-red-500'
             ].join(' ') } 
           >
-            <img 
-              src={ calendarTheme == 'white' ? whiteCalendar : blackCalendar } 
-              alt="" 
-            />
+            <div className='w-full h-[104px] overflow-hidden'>
+              <CalendarPreview 
+                  // img={ calendarImages.length>0 ? calendarImages.find(item=>item.name == 'cover').path : '' }
+                  img={ calendarImages.length>0 ? calendarImages.find(item=>item.name == listOfMonth[index]['english']).path : '' }
+                  selectedMonth={ index } 
+                  selectedYear={ selectedYear } 
+                  style={{ 
+                    transform: 'scale(0.14)',
+                    transformOrigin: 'left top',
+                    height: '700px'
+                  }}
+              />
+            </div>
+
             { item[language].slice(0, 3) } - { selectedYear }
           </div>
         ))
@@ -48,7 +69,16 @@ const PreviewChanger = () => {
           (selectedMonth === 12) && 'shadow scale-95 border-red-500'
         ].join(' ') }
       >
-        <BackPage img={ calendarImages.length>0 ? calendarImages.find(item=>item.name == 'back').path : '' } />
+        <div className='w-full h-[104px] overflow-hidden'>
+          <BackPage 
+            img={ calendarImages.length>0 ? calendarImages.find(item=>item.name == 'back').path : '' }
+            style={{ 
+              transform: 'scale(0.14)',
+              transformOrigin: 'left top',
+              height: '700px'
+            }}
+          />
+        </div>
         Back
       </div>
     </div>

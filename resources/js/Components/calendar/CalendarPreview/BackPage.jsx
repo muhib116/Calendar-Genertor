@@ -1,11 +1,8 @@
-import calendarContext from '@/context/calendarContext'
-import { useContext } from 'react'
 import classes from './index.module.css'
 
-export default function CoverPage({ img }) {
-  let { calendarImages } = useContext(calendarContext)
+export default function CoverPage({ img, style={} }) {
   return (
-    <div className={ [classes.cover_photo, classes.wrapper, 'h-full'].join(' ') }>
+    <div style={ style } className={ [classes.cover_photo, classes.wrapper, 'h-full'].join(' ') }>
       <div className={ [classes.calendar, 'shadow h-full'].join(' ') }>
         {
           img != '' &&

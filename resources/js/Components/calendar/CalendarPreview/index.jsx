@@ -17,7 +17,7 @@ const CalendarPreview = ({ img, selectedMonth, selectedYear, style={} }) =>
   })
 
   return (
-    <div className={ [classes.wrapper, 'h-full'].join(' ') } ref={ calendarContainer }>
+    <div style={ style } className={ [classes.wrapper, 'h-full'].join(' ') } ref={ calendarContainer }>
       <div className={ [classes.calendar, 'shadow h-full'].join(' ') }>
         <div className={ [classes.image].join(' ') }>
           {

@@ -9,7 +9,20 @@ import { toast } from "react-toastify"
 
 export default function useCalendar() 
 {
-    const { serverData, activeWeekIndex, setSelectedWeek, calendarTheme, calendarImages, selectedMonth, selectedYear, weeks, setWeeks, language } = useContext(calendarContext)
+    const { 
+        serverData, 
+        activeWeekIndex, 
+        setSelectedWeek, 
+        calendarTheme, 
+        calendarImages, 
+        selectedMonth, 
+        selectedYear, 
+        calendarPrice,
+        weeks, 
+        setWeeks, 
+        language
+    } = useContext(calendarContext)
+    
     const { auth } = usePage().props
     const getDateList = (selectedMonth, selectedYear) => 
     {
@@ -107,9 +120,9 @@ export default function useCalendar()
             month: selectedMonth,
             language,
             week: activeWeekIndex,
+            price: calendarPrice,
             theme: calendarTheme,
             settings: calendarImages
-
         }
 
         Inertia.post(route('calendar_update', data))
@@ -132,11 +145,35 @@ export default function useCalendar()
             price
         }
 
-        Inertia.post(route('calendar_update', data))
+        Inertia.post(route('calendar_price_update', data))
     }
 
     const deleteCalendar = (calendar_id) => {
         Inertia.delete(route('calendar_delete', calendar_id))
+        toast.warn('Calendar Deleted !', {
+            position: "top-right",
+            autoClose: 4000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        })
+    }
+
+    const makeCalendarSaleable = (calendar_id) => {
+        Inertia.post(route('salable', calendar_id))
+        toast.success('Now This Calendar Is Salable !', {
+            position: "top-right",
+            autoClose: 4000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        })
     }
 
     return {
@@ -145,6 +182,7 @@ export default function useCalendar()
         saveCalendar,
         updateCalendar,
         deleteCalendar,
-        updateCalendarPrice
+        updateCalendarPrice,
+        makeCalendarSaleable
     }
 }

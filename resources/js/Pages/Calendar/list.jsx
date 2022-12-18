@@ -5,8 +5,8 @@ import Item from './components/Item'
 export default function index({calendars})
 {
     return (
-        <div className={ ['grid items-start m-auto min-h-screen bg-slate-100'].join(' ') }>
-            <nav className={ ['p-4 bg-white border-b px-10 sticky top-0'].join(' ') }>
+        <div className={ ['m-auto min-h-screen bg-slate-100'].join(' ') }>
+            <nav className={ ['p-4 bg-white border-b px-10 sticky top-0 z-50'].join(' ') }>
                 <Navigation />
             </nav>
             <div className={ [classes.leftSidebarAndMainContent, 'h-full'].join(' ') }>

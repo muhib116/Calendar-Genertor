@@ -22,6 +22,7 @@
         "vite": "^3.0.0"
     },
     "dependencies": {
+        "react-draggable": "^4.4.5",
         "react-toastify": "^9.1.1"
     }
 }

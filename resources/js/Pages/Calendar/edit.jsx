@@ -10,19 +10,27 @@ export default function edit({ data }) {
         setLanguage,
         setActiveWeekIndex,
         setCalendarTheme,
-        setServerData
+        setServerData,
+        setCalendarPrice
     } = useContext(calendarContext)
 
     useEffect(() => {
-        const { year, month, language, week, theme } = data
+        document.title = 'Update Calendar'
+
+        const { year, month, language, week, theme, price } = data
         setServerData(data)
-        setCalendarImages(JSON.parse(data.settings))
+        setCalendarImages(data.settings)
         setIsCalendarEditable(true)
         setSelectedYear(year)
         setSelectedMonth(month)
         setLanguage(language)
         setActiveWeekIndex(week)
         setCalendarTheme(theme)
+        setCalendarPrice(price)
+
+        return () => {
+            setIsCalendarEditable(false)
+        }
     }, [])
     return (
         <Create />

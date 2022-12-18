@@ -14,7 +14,7 @@ export default function Navigation({ page }) {
   const handlePreview = () => {
     setIsPreview(!isPreview)
   }
-
+  console.log(isCalendarEditable)
   return (
     <div className='flex justify-between'>
       <div className="flex gap-4">
@@ -55,12 +55,7 @@ export default function Navigation({ page }) {
           </>
         }
         
-
-
-        {
-          page != 'calendar' &&
-          <Link href='/calendar/create'>Create calenders</Link>
-        }
+        <Link href='/calendar/create'>Create calenders</Link>
         <Link href='/calendars'>My calenders</Link>
       </div>
     </div>

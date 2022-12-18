@@ -1,11 +1,3 @@
-.calendar_container{
-    max-width: 500px;
-    margin: auto;
-    aspect-ratio: 1/1.6;
-    background-color: #fff;
-    overflow: hidden;
-}
-
 .main_wrapper{
     grid-template-rows: 65px 1fr;
 }

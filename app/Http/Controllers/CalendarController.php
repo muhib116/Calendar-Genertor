@@ -33,7 +33,7 @@ class CalendarController extends Controller
         $data = $request->all();
 
         $payload = [];
-        if($data['price']>=0){
+        if($data['price']>0){
             $payload = [
                 'price' => $data['price']
             ];
@@ -44,9 +44,22 @@ class CalendarController extends Controller
                 'language' => $data['language'],
                 'week' => $data['week'],
                 'theme' => $data['theme'],
-                'settings' => $data['settings'] && json_encode($data['settings']),
+                'settings' => $data['settings'],
             ];
         }
+        
+        if(count($payload)){
+            Calendar::where(['id' => $request->id])->where(['user_id' => $request->user_id])->update($payload);
+        }
+
+        return \Redirect::back();
+    }
+
+    function priceUpdate(Request $request) {
+        $data = $request->all();
+        $payload = [
+            'price' => $data['price']
+        ];
         
         if(count($payload)){
             Calendar::where(['id' => $request->id])->where(['user_id' => $request->user_id])->update($payload);
@@ -58,5 +71,18 @@ class CalendarController extends Controller
     function delete($calendar_id){
         Calendar::where(['id' => $calendar_id])->delete();
         return redirect()->back();
+    }
+
+    function makeCalendarSalable(Request $request, $calendar_id){
+        $calendar = Calendar::where(['id' => $calendar_id])->first();
+        Calendar::where(['user_id' => $calendar->user_id])->update([
+            'is_salable' => 0
+        ]);
+
+        Calendar::where(['id' => $calendar_id])->update([
+            'is_salable' => 1
+        ]);
+
+        return \Redirect::back();
     }
 }

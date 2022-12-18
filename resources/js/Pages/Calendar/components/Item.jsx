@@ -1,5 +1,4 @@
 import { Link } from '@inertiajs/inertia-react'
-import { isEmpty } from 'lodash'
 import CoverPage from '@/Components/calendar/CalendarPreview/CoverPage'
 import useCalendar from '@/Components/calendar/useCalendar'
 import { toast } from 'react-toastify'
@@ -9,9 +8,9 @@ export default function Item({ calendar })
 {
     const [Price, setPrice] = useState(calendar.price)
     const getCoverPhoto = (settings, key) => {
-        return settings==[] && JSON.parse(settings).find(item => item.name == key)
+        return settings.find(item => item.name == key)
     }
-    const { updateCalendarPrice, deleteCalendar } = useCalendar()
+    const { updateCalendarPrice, deleteCalendar, makeCalendarSaleable } = useCalendar()
     const handlePrice = (e) => {
         let price = e.target.value
         setPrice(price)
@@ -31,40 +30,42 @@ export default function Item({ calendar })
         })
     }
 
+
     return (
         <div className='flex gap-5 items-start'>
-            <div className='w-52'>
+            <div className='w-52 h-[330px]'>
                 <Link href={ `calendar/edit/${calendar.id}` }>
-                    <CoverPage img={ getCoverPhoto(calendar.settings, 'cover').path } />
+                    <CoverPage style={{ width: '200px', height: 'auto' }} img={ getCoverPhoto(calendar.settings, 'cover').path } />
                 </Link>
             </div>
             <input type='number' value={ Price } min="0" onInput={ handlePrice } className='py-1 border-gray-300 bg-transparent' />
-            <button 
-                className='px-4 py-1 bg-green-500 rounded shadow'
-                onClick={ () => updatePrice(Price, calendar.id) }
-            >
-                Update
-            </button>
-            <button 
-                className='px-4 py-1 bg-red-500 text-white rounded shadow'
-                onClick={ () => {
-                    if(confirm("Are you sure to delete this?")){
-                        deleteCalendar(calendar.id)
-                        toast.warn('Calendar Deleted !', {
-                            position: "top-right",
-                            autoClose: 4000,
-                            hideProgressBar: false,
-                            closeOnClick: true,
-                            pauseOnHover: true,
-                            draggable: true,
-                            progress: undefined,
-                            theme: "light",
-                        })
-                    }
-                } }
-            >
-                Delete
-            </button>
+            <div className="flex gap-4">
+                <button 
+                    className='px-4 py-1 bg-green-500 rounded shadow'
+                    onClick={ () => updatePrice(Price, calendar.id) }
+                >
+                    Update
+                </button>
+                <button 
+                    className='px-4 py-1 bg-red-500 text-white rounded shadow'
+                    onClick={ () => {
+                        if(confirm("Are you sure to delete this?")){
+                            deleteCalendar(calendar.id)
+                        }
+                    } }
+                >
+                    Delete
+                </button>
+                <label
+                    className='flex gap-2 items-center cursor-pointer'
+                    onChange={ () => {
+                        makeCalendarSaleable(calendar.id)
+                    }}
+                >
+                    <input type="radio" name='saleable' checked={ calendar.is_salable } />
+                    Salable
+                </label>
+            </div>
         </div>
     )
 }

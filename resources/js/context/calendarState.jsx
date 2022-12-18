@@ -16,9 +16,10 @@ const CalendarState = ({ children }) => {
     const [activeWeekIndex, setActiveWeekIndex] = useState(0)
     const [selectedWeek, setSelectedWeek] = useState(0)
     const [weeks, setWeeks] = useState(cloneDeep(weeksList))
-    const [calendarImages, setCalendarImages] = useState([])
+    const [calendarImages, setCalendarImages] = useState(cloneDeep(DemoImageListForCalendar))
     const [leftSideComponentName, setLeftSideComponentName] = useState('CalendarConfig')
     const [media, setMedia] = useState([])
+    const [calendarPrice, setCalendarPrice] = useState(0)
 
     return (
         <CalendarContext.Provider 
@@ -38,6 +39,7 @@ const CalendarState = ({ children }) => {
                 selectedWeek,
                 media,
                 isPreview, 
+                calendarPrice,
                 setServerData, 
                 setSelectedYear, 
                 setDateList, 
@@ -52,7 +54,8 @@ const CalendarState = ({ children }) => {
                 setLeftSideComponentName,
                 setSelectedWeek,
                 setMedia,
-                setIsPreview
+                setIsPreview,
+                setCalendarPrice
             }}
         >
             { children }

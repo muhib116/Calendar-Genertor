@@ -5,6 +5,10 @@ use Illuminate\Foundation\Application;
 use Inertia\Inertia;
 use App\Models\Calendar;
 
+Route::get('/', function () {
+    return Inertia::render('Calendar/create');
+})->middleware(['auth', 'verified'])->name('calendar');
+
 Route::get('/calendar/create', function () {
     return Inertia::render('Calendar/create');
 })->middleware(['auth', 'verified'])->name('calendar');
@@ -26,9 +30,17 @@ Route::post('/edit-calendar/{id}/{user_id}', [CalendarController::class, 'update
     ->middleware(['auth', 'verified'])
     ->name('calendar_update');
 
+Route::post('/edit-calendar-price/{id}/{user_id}', [CalendarController::class, 'priceUpdate'])
+    ->middleware(['auth', 'verified'])
+    ->name('calendar_price_update');
+
 Route::delete('/delete/{calendar_id}', [CalendarController::class, 'delete'])
     ->middleware(['auth', 'verified'])
     ->name('calendar_delete');
+
+Route::post('/salable/{calendar_id}', [CalendarController::class, 'makeCalendarSalable'])
+    ->middleware(['auth', 'verified'])
+    ->name('salable');
 
 
 Route::post('/file-upload', [fileUploadController::class, 'fileUpload'])

@@ -4,26 +4,36 @@ import CalendarPreview from '../../Components/calendar/CalendarPreview'
 import PreviewChanger from '../../Components/calendar/PreviewChanger'
 import Navigation from '../../Components/calendar/Navigation'
 import calendarContext from '../../context/calendarContext'
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import AngleIcon from '../../assets/icons/AngleIcon'
 import CoverPage from '../../Components/calendar/CalendarPreview/CoverPage'
 import BackPage from '../../Components/calendar/CalendarPreview/BackPage'
 import { listOfMonth } from '@/calendarData'
 
-export default function Master() {
+export default function Master()
+{
+    useEffect(() => {
+        document.title = 'Create Calendar'
+    }, [])
+
     const { 
         calendarImages, 
         isPreview, 
         selectedMonth, 
         selectedYear, 
-        setSelectedMonth
+        setSelectedMonth,
+        setIsPreview
     } = useContext(calendarContext)
 
     const handleMonth = (direction) => {
-        if((selectedMonth + direction) >= -1 && (selectedMonth + direction) <= 12){
-            setSelectedMonth(selectedMonth + direction)
+        if((+selectedMonth + direction) >= -1 && (+selectedMonth + direction) <= 12){
+            setSelectedMonth(+selectedMonth + direction)
         }
     }
+
+    useEffect(() => {
+        console.log(selectedMonth)
+    }, [])
   
   return (
     <div className={ [classes.main_wrapper, 'grid items-start m-auto min-h-screen bg-slate-100'].join(' ') }>
@@ -45,6 +55,17 @@ export default function Master() {
 
               <div className={ [classes.main_content, ' w-full gap-4'].join(' ') }>
                 <div className={ [classes.main_preview, 'p-4 relative select-none'].join(' ') }>
+                    
+                    {
+                        !isPreview &&
+                        <h1 onClick={ () => setIsPreview(!isPreview) } className='flex gap-2 cursor-pointer hover:text-green-500 w-fit'>
+                            <svg width="24px" height="24px" viewBox="0 0 24 24" fill='currentColor'>
+                                <path d="M21 11H6.414l5.293-5.293-1.414-1.414L2.586 12l7.707 7.707 1.414-1.414L6.414 13H21z"/>
+                            </svg>
+                            Back to Design
+                        </h1>
+                    }
+
                     <div className='flex justify-between absolute top-1/2 w-full left-0'>
                         <AngleIcon className='cursor-pointer' onClick={ () => handleMonth(-1) } />
                         <AngleIcon className='cursor-pointer rotate-180' onClick={ () => handleMonth(1) } />

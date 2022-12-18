@@ -11,7 +11,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
-axios.defaults.baseURL = 'http://127.0.0.1:8000/api';
+axios.defaults.baseURL = `${location.origin}/api`;
 
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,

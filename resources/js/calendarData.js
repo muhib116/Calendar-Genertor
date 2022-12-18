@@ -88,7 +88,7 @@ const listOfMonth = [
         french: 'Août'
     },
     {
-        english: 'August',
+        english: 'September',
         spanish: 'Septiembre',
         french: 'Septembre'
     },
@@ -111,26 +111,82 @@ const listOfMonth = [
 const languageList = ['English', 'French', 'Spanish']
 const yearList = []
 const DemoImageListForCalendar = [
-    {name: 'cover', path: DemoImages[Math.floor(Math.random()*DemoImages.length)]},
-    {name: 'January', path: DemoImages[Math.floor(Math.random()*DemoImages.length)]},
-    {name: 'February', path: DemoImages[Math.floor(Math.random()*DemoImages.length)]},
-    {name: 'March', path: DemoImages[Math.floor(Math.random()*DemoImages.length)]},
-    {name: 'April', path: DemoImages[Math.floor(Math.random()*DemoImages.length)]},
-    {name: 'May', path: DemoImages[Math.floor(Math.random()*DemoImages.length)]},
-    {name: 'June', path: DemoImages[Math.floor(Math.random()*DemoImages.length)]},
-    {name: 'July', path: DemoImages[Math.floor(Math.random()*DemoImages.length)]},
-    {name: 'August', path: DemoImages[Math.floor(Math.random()*DemoImages.length)]},
-    {name: 'August', path: DemoImages[Math.floor(Math.random()*DemoImages.length)]},
-    {name: 'October', path: DemoImages[Math.floor(Math.random()*DemoImages.length)]},
-    {name: 'November', path: DemoImages[Math.floor(Math.random()*DemoImages.length)]},
-    {name: 'December', path: DemoImages[Math.floor(Math.random()*DemoImages.length)]},
-    {name: 'back', path: DemoImages[Math.floor(Math.random()*DemoImages.length)]},
+    {
+        name: 'cover', 
+        path: '', 
+        text:{}
+    },
+    {
+        name: 'January', 
+        path: '', 
+        text:{}
+    },
+    {
+        name: 'February', 
+        path: '', 
+        text:{}
+    },
+    {
+        name: 'March', 
+        path: '', 
+        text:{}
+    },
+    {
+        name: 'April', 
+        path: '', 
+        text:{}
+    },
+    {
+        name: 'May', 
+        path: '', 
+        text:{}
+    },
+    {
+        name: 'June', 
+        path: '', 
+        text:{}
+    },
+    {
+        name: 'July', 
+        path: '', 
+        text:{}
+    },
+    {
+        name: 'August', 
+        path: '', 
+        text:{}
+    },
+    {
+        name: 'September', 
+        path: '', 
+        text:{}
+    },
+    {
+        name: 'October', 
+        path: '', 
+        text:{}
+    },
+    {
+        name: 'November', 
+        path: '', 
+        text:{}
+    },
+    {
+        name: 'December', 
+        path: '', 
+        text:{}
+    },
+    {
+        name: 'back', 
+        path: '', 
+        text:{}
+    },
 ]
 
 
 // create year list start------
 let selectedYear = new Date().getFullYear()
-let nextYearLimit = selectedYear + 1
+let nextYearLimit = selectedYear + 20
 
 for(selectedYear; selectedYear <= nextYearLimit; selectedYear++){
     yearList.push(selectedYear)
