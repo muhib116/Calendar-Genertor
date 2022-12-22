@@ -3,8 +3,6 @@ import classes from './index.module.css'
 import calendarContext from '../../../context/calendarContext'
 import CoverPage from '../CalendarPreview/CoverPage'
 import BackPage from '../CalendarPreview/BackPage'
-import whiteCalendar from '../../../assets/white-calendar.png'
-import blackCalendar from '../../../assets/black-calendar.png'
 import CalendarPreview from '@/Components/calendar/CalendarPreview/index'
 import { listOfMonth } from '../../../calendarData'
 
@@ -16,16 +14,16 @@ const PreviewChanger = () => {
   }
 
   return (
-    <div className={[classes.wrapper, 'h-full flex gap-2 text-xs overflow-x-auto w-full justify-center'].join(' ')}>
+    <div className={[classes.wrapper, 'h-full flex gap-2  overflow-x-auto text-xs w-full'].join(' ')}>
       <div 
         onClick={ () => handleMonth(-1) } 
-        className={ ['cursor-pointer p-1 text-center grid items-end border rounded hover:shadow active:scale-95',
+        className={ ['cursor-pointer p-1 text-center grid items-end border rounded hover:shadow active:scale-95 min-w-[80px]',
           (selectedMonth === -1) && 'shadow scale-95 border-red-500'
         ].join(' ') }
       >
         <div className='w-full h-[104px] overflow-hidden'>
           <CoverPage 
-            img={ calendarImages.length>0 ? calendarImages.find(item=>item.name == 'cover').path : '' }
+            img={ calendarImages.length>0 ? calendarImages.find(item=>item.name == 'cover') : '' }
             style={{ 
               transform: 'scale(0.14)',
               transformOrigin: 'left top',
@@ -41,14 +39,13 @@ const PreviewChanger = () => {
             onClick={ () => handleMonth(index) } 
             key={ 'previewChangerKey-'+index } 
             className={ [
-              'cursor-pointer p-1 text-center grid items-end border hover:shadow-md active:scale-95 rounded',
+              'cursor-pointer p-1 text-center grid items-end border min-w-[80px] hover:shadow-md active:scale-95 rounded',
               (selectedMonth === index) && 'shadow scale-95 border-red-500'
             ].join(' ') } 
           >
             <div className='w-full h-[104px] overflow-hidden'>
               <CalendarPreview 
-                  // img={ calendarImages.length>0 ? calendarImages.find(item=>item.name == 'cover').path : '' }
-                  img={ calendarImages.length>0 ? calendarImages.find(item=>item.name == listOfMonth[index]['english']).path : '' }
+                  img={ calendarImages.length>0 ? calendarImages.find(item=>item.name == listOfMonth[index]['english']) : '' }
                   selectedMonth={ index } 
                   selectedYear={ selectedYear } 
                   style={{ 
@@ -65,13 +62,13 @@ const PreviewChanger = () => {
       }
       <div 
         onClick={ () => handleMonth(12) } 
-        className={ ['cursor-pointer p-1 text-center grid items-end border rounded hover:shadow active:scale-95',
+        className={ ['cursor-pointer p-1 text-center grid items-end border min-w-[80px] rounded hover:shadow active:scale-95',
           (selectedMonth === 12) && 'shadow scale-95 border-red-500'
         ].join(' ') }
       >
         <div className='w-full h-[104px] overflow-hidden'>
           <BackPage 
-            img={ calendarImages.length>0 ? calendarImages.find(item=>item.name == 'back').path : '' }
+            img={ calendarImages.length>0 ? calendarImages.find(item=>item.name == 'back') : '' }
             style={{ 
               transform: 'scale(0.14)',
               transformOrigin: 'left top',

@@ -30,10 +30,6 @@ export default function Master()
             setSelectedMonth(+selectedMonth + direction)
         }
     }
-
-    useEffect(() => {
-        console.log(selectedMonth)
-    }, [])
   
   return (
     <div className={ [classes.main_wrapper, 'grid items-start m-auto min-h-screen bg-slate-100'].join(' ') }>
@@ -74,23 +70,23 @@ export default function Master()
                     <div className={[classes.calendar_container].join(' ')}>
                         {
                             (selectedMonth === -1) &&
-                            <CoverPage img={ calendarImages.length>0 ? calendarImages.find(item=>item.name == 'cover').path : '' } />
+                            <CoverPage img={ calendarImages.length>0 ? calendarImages.find(item=>item.name == 'cover') : '' } />
                         }
                         {
                             (selectedMonth >= 0 && selectedMonth<=11) &&
                             <CalendarPreview 
-                                img={ calendarImages.length>0 ? calendarImages.find(item=>item.name == listOfMonth[selectedMonth]['english']).path : '' }
+                                img={ calendarImages.length>0 ? calendarImages.find(item=>item.name == listOfMonth[selectedMonth]['english']) : '' }
                                 selectedMonth={ selectedMonth } 
                                 selectedYear={ selectedYear } 
                             />
                         }
                         {
                             (selectedMonth === 12) &&
-                            <BackPage img={ calendarImages.length>0 ? calendarImages.find(item=>item.name == 'back').path : '' } />
+                            <BackPage img={ calendarImages.length>0 ? calendarImages.find(item=>item.name == 'back') : '' } />
                         }
                     </div>
                 </div>
-                <div className={ [classes.main_slide, 'p-4 bg-white h-full self-end'].join(' ') }>
+                <div className={ [classes.main_slide, 'p-4 bg-white h-full w-full overflow-x-auto self-end'].join(' ') }>
                     <PreviewChanger />
                 </div>
             </div>

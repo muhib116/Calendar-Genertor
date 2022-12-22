@@ -5,28 +5,35 @@ import { useContext } from 'react';
 import calendarContext from '../../../context/calendarContext';
 import { useRef } from 'react';
 import { useEffect } from 'react';
+import MoveableBox from '../MoveableBox'
+import { get } from 'lodash'
 
 
-const CalendarPreview = ({ img, selectedMonth, selectedYear, style={} }) =>
+const CalendarPreview = ({ img, style={}, selectedMonth, selectedYear }) =>
 {
   const calendarContainer = useRef()
   const { getDateList } = useCalendar()
-  const { calendarImages, calendarTheme, setCalendarContainerElement, language, weeks } = useContext(calendarContext)
+  const { calendarTheme, setCalendarContainerElement, language, weeks } = useContext(calendarContext)
   useEffect(() => {
     setCalendarContainerElement(calendarContainer.current)
   })
 
   return (
-    <div style={ style } className={ [classes.wrapper, 'h-full'].join(' ') } ref={ calendarContainer }>
+    <div className={ [classes.wrapper, 'h-full'].join(' ') } ref={ calendarContainer }>
       <div className={ [classes.calendar, 'shadow h-full'].join(' ') }>
-        <div className={ [classes.image].join(' ') }>
+        <div className={ [classes.image, 'relative'].join(' ') }>
           {
-            img != '' &&
+            img && img.path != '' &&
             <img 
               className='block w-full object-cover object-center'
-              src={ img }
+              src={ img.path }
               alt=""
             />
+          }
+
+          {
+            img &&
+            <MoveableBox style={ get(img, 'text.style') } title={ get(img, 'text.title') } />
           }
         </div>
 

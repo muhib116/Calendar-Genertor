@@ -5,6 +5,7 @@ import { cloneDeep } from "lodash"
 import { usePage } from '@inertiajs/inertia-react'
 import { Inertia } from "@inertiajs/inertia"
 import { toast } from "react-toastify"
+import { DemoImageListForCalendar } from '@/calendarData.js'
 
 
 export default function useCalendar() 
@@ -15,6 +16,7 @@ export default function useCalendar()
         setSelectedWeek, 
         calendarTheme, 
         calendarImages, 
+        setCalendarImages, 
         selectedMonth, 
         selectedYear, 
         calendarPrice,
@@ -96,7 +98,27 @@ export default function useCalendar()
             week: activeWeekIndex,
             theme: calendarTheme,
             settings: calendarImages
+        }
 
+        let isValid = true
+        calendarImages.forEach(item => {
+            if(item.path == ''){
+                isValid = false
+            }
+        })
+
+        if(!isValid){
+            toast.error('Some calendar image is missing !', {
+                position: "top-right",
+                autoClose: 4000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            })
+            return
         }
 
         Inertia.post(route('calendar_save', data))
@@ -110,6 +132,8 @@ export default function useCalendar()
             progress: undefined,
             theme: "light",
         })
+
+        setCalendarImages(cloneDeep(DemoImageListForCalendar))
     }
 
     const updateCalendar = () => {

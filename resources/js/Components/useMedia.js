@@ -1,5 +1,5 @@
-import calendarContext from "@/context/calendarContext"
 import { useContext } from "react"
+import calendarContext from "@/context/calendarContext"
 import axios from "axios"
 import { usePage } from '@inertiajs/inertia-react'
 import { cloneDeep, get, isEmpty } from 'lodash'
@@ -7,7 +7,7 @@ import { listOfMonth } from '@/calendarData'
 
 export default function useMedia() {
     const { auth } = usePage().props
-    const { media, selectedMonth, calendarImages, setCalendarImages, setMedia } = useContext(calendarContext)
+    const { selectedMonth, calendarImages, setCalendarImages, setMedia } = useContext(calendarContext)
 
     let timeoutId = null
     const getMedia = () => {

@@ -8,6 +8,7 @@ export default function Item({ calendar })
 {
     const [Price, setPrice] = useState(calendar.price)
     const getCoverPhoto = (settings, key) => {
+        console.log(settings)
         return settings.find(item => item.name == key)
     }
     const { updateCalendarPrice, deleteCalendar, makeCalendarSaleable } = useCalendar()

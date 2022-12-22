@@ -14,7 +14,7 @@ export default function Navigation({ page }) {
   const handlePreview = () => {
     setIsPreview(!isPreview)
   }
-  console.log(isCalendarEditable)
+  
   return (
     <div className='flex justify-between'>
       <div className="flex gap-4">
@@ -30,7 +30,7 @@ export default function Navigation({ page }) {
               <img src={ fileLibraryIcon } className={ ['w-5 h-5 block'] } alt="" />
               My Files
             </button>
-            <button className="flex gap-2 items-center font-semibold">
+            <button onClick={ () => setLeftSideComponentName('TextConfig') } className="flex gap-2 items-center font-semibold">
               <img src={ addTextIcon } className={ ['w-5 h-5 block'] } alt="" />
               Add Text
             </button>
@@ -54,9 +54,15 @@ export default function Navigation({ page }) {
             }
           </>
         }
-        
-        <Link href='/calendar/create'>Create calenders</Link>
-        <Link href='/calendars'>My calenders</Link>
+        {
+          (location.pathname != '/calendar/create') &&
+          <Link href={ route('calendar') }>Create</Link>
+        }
+
+        {
+          (location.pathname != 'calendars') &&
+          <Link href='/calendars'>My calenders</Link>
+        }
       </div>
     </div>
   )

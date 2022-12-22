@@ -17,7 +17,7 @@ Route::get('/calendar/edit/{id?}', function ($id)
 {
     $data = Calendar::where(['id' => $id])->first();
     return Inertia::render('Calendar/edit', ['data' => $data]);
-})->middleware(['auth', 'verified'])->name('calendar');
+})->middleware(['auth', 'verified'])->name('calendar.edit');
 
 Route::get('/calendars', [CalendarController::class, 'index'])->middleware(['auth', 'verified'])->name('my_calendars');
 

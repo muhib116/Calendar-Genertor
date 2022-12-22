@@ -1,6 +1,7 @@
 import classes from '../Calendar/index.module.css'
 import Navigation from '@/Components/calendar/Navigation'
 import Item from './components/Item'
+import { Link } from '@inertiajs/inertia-react'
 
 export default function index({calendars})
 {
@@ -16,6 +17,16 @@ export default function index({calendars})
                         calendars.map((calendar, index) => (
                             <Item calendar={ calendar } key={ index } />
                         ))
+                    }
+
+                    {
+                        calendars=='' && 
+                        <>
+                            <h1 className="text-center text-xl">No calendars found!</h1>
+                            <Link href={ route('calendar') } className='block mx-auto px-4 py-2 rounded shadow bg-orange-500 text-white'>
+                                Create Calendar
+                            </Link>
+                        </>
                     }
                 </div>
             </div>

@@ -1,5 +1,5 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import { Head } from '@inertiajs/inertia-react';
+import { Head, Link } from '@inertiajs/inertia-react';
 
 export default function Dashboard(props) {
     return (
@@ -14,6 +14,7 @@ export default function Dashboard(props) {
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div className="p-6 text-gray-900">You're logged in!</div>
+                        <Link href={ route('calendar') } className="p-6 pt-0 text-orange-500 block text-xl font-extrabold">Create Calendar</Link>
                     </div>
                 </div>
             </div>

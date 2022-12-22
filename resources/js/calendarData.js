@@ -70,7 +70,7 @@ const listOfMonth = [
     {
         english: 'May',
         spanish: 'Mayo',
-        french: 'Peut'
+        french: 'Mai'
     },
     {
         english: 'June',
@@ -110,83 +110,136 @@ const listOfMonth = [
 ]
 const languageList = ['English', 'French', 'Spanish']
 const yearList = []
+
+const defaultTextConfig = {
+    color: 'black',
+    backgroundColor: 'transparent',
+    textAlign: 'center',
+    fontSize: '20px',
+    fontWeight: 'bolder',
+    radius: 0,
+    fontFamily: ''
+}
+
 const DemoImageListForCalendar = [
     {
         name: 'cover', 
         path: '', 
-        text:{}
+        text: {
+            title: '',
+            style: defaultTextConfig
+        }
     },
     {
         name: 'January', 
         path: '', 
-        text:{}
+        text: {
+            title: '',
+            style: defaultTextConfig
+        }
     },
     {
         name: 'February', 
         path: '', 
-        text:{}
+        text: {
+            title: '',
+            style: defaultTextConfig
+        }
     },
     {
         name: 'March', 
         path: '', 
-        text:{}
+        text: {
+            title: '',
+            style: defaultTextConfig
+        }
     },
     {
         name: 'April', 
         path: '', 
-        text:{}
+        text: {
+            title: '',
+            style: defaultTextConfig
+        }
     },
     {
         name: 'May', 
         path: '', 
-        text:{}
+        text: {
+            title: '',
+            style: defaultTextConfig
+        }
     },
     {
         name: 'June', 
         path: '', 
-        text:{}
+        text: {
+            title: '',
+            style: defaultTextConfig
+        }
     },
     {
         name: 'July', 
         path: '', 
-        text:{}
+        text: {
+            title: '',
+            style: defaultTextConfig
+        }
     },
     {
         name: 'August', 
         path: '', 
-        text:{}
+        text: {
+            title: '',
+            style: defaultTextConfig
+        }
     },
     {
         name: 'September', 
         path: '', 
-        text:{}
+        text: {
+            title: '',
+            style: defaultTextConfig
+        }
     },
     {
         name: 'October', 
         path: '', 
-        text:{}
+        text: {
+            title: '',
+            style: defaultTextConfig
+        }
     },
     {
         name: 'November', 
         path: '', 
-        text:{}
+        text: {
+            title: '',
+            style: defaultTextConfig
+        }
     },
     {
         name: 'December', 
         path: '', 
-        text:{}
+        text: {
+            title: '',
+            style: defaultTextConfig
+        }
     },
     {
         name: 'back', 
         path: '', 
-        text:{}
+        text: {
+            title: '',
+            style: defaultTextConfig
+        }
     },
 ]
 
 
 // create year list start------
-let selectedYear = new Date().getFullYear()
-let nextYearLimit = selectedYear + 20
+let selectedYear = new Date().getFullYear()+1
+let nextYearLimit = selectedYear + 17
 
 for(selectedYear; selectedYear <= nextYearLimit; selectedYear++){
     yearList.push(selectedYear)

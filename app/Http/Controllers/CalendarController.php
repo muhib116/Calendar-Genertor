@@ -23,7 +23,7 @@ class CalendarController extends Controller
         $calendar->language = $data['language'];
         $calendar->week = $data['week'];
         $calendar->theme = $data['theme'];
-        $calendar->settings = array_key_exists('settings', $data) ? json_encode($data['settings']) : json_encode([]);
+        $calendar->settings = $data['settings'];
         $calendar->save();
 
         return \Redirect::route('my_calendars');
