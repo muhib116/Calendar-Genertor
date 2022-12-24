@@ -36,7 +36,8 @@ export default function Item({ calendar })
         <div className='flex gap-5 items-start'>
             <div className='w-52 h-[330px]'>
                 <Link href={ `calendar/edit/${calendar.id}` }>
-                    <CoverPage style={{ width: '200px', height: 'auto' }} img={ getCoverPhoto(calendar.settings, 'cover').path } />
+                    {/* <CoverPage img={ calendarImages.length>0 ? calendarImages.find(item=>item.name == 'cover') : '' } /> */}
+                    <CoverPage style={{ width: '200px', height: 'auto' }} img={ getCoverPhoto(calendar.settings, 'cover') } />
                 </Link>
             </div>
             <input type='number' value={ Price } min="0" onInput={ handlePrice } className='py-1 border-gray-300 bg-transparent' />

@@ -20,6 +20,7 @@ const CalendarState = ({ children }) => {
     const [leftSideComponentName, setLeftSideComponentName] = useState('CalendarConfig')
     const [media, setMedia] = useState([])
     const [calendarPrice, setCalendarPrice] = useState(0)
+    const [SelectedPageSettings, setSelectedPageSettings] = useState({})
 
     return (
         <CalendarContext.Provider 
@@ -40,6 +41,7 @@ const CalendarState = ({ children }) => {
                 media,
                 isPreview, 
                 calendarPrice,
+                SelectedPageSettings,
                 setServerData, 
                 setSelectedYear, 
                 setDateList, 
@@ -55,7 +57,8 @@ const CalendarState = ({ children }) => {
                 setSelectedWeek,
                 setMedia,
                 setIsPreview,
-                setCalendarPrice
+                setCalendarPrice,
+                setSelectedPageSettings
             }}
         >
             { children }

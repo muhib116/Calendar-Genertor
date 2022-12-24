@@ -1,7 +1,7 @@
 import calendarContext from "@/context/calendarContext"
 import { useContext } from "react"
-import { weeksList } from "@/calendarData"
-import { cloneDeep } from "lodash"
+import { weeksList, listOfMonth } from "@/calendarData"
+import { cloneDeep, get } from "lodash"
 import { usePage } from '@inertiajs/inertia-react'
 import { Inertia } from "@inertiajs/inertia"
 import { toast } from "react-toastify"
@@ -200,6 +200,26 @@ export default function useCalendar()
         })
     }
 
+    const getSelectedCalendarData = () => 
+    {
+        const monthName = get(listOfMonth, `${selectedMonth}.english`)
+        let filteredImageData = {}
+        if(monthName){
+            filteredImageData = calendarImages.find(img => img.name == monthName)
+        }else{
+            if(selectedMonth == '-1'){
+                // cover photo
+                filteredImageData = calendarImages.find(img => img.name == 'cover')
+            }
+            if(selectedMonth == '12'){
+                // back photo
+                filteredImageData = calendarImages.find(img => img.name == 'back')
+            }
+        }
+
+        return filteredImageData
+    }
+
     return {
         getDateList,
         weekChanger,
@@ -207,6 +227,7 @@ export default function useCalendar()
         updateCalendar,
         deleteCalendar,
         updateCalendarPrice,
-        makeCalendarSaleable
+        makeCalendarSaleable,
+        getSelectedCalendarData
     }
 }

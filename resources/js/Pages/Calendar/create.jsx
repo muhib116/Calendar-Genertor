@@ -9,9 +9,11 @@ import AngleIcon from '../../assets/icons/AngleIcon'
 import CoverPage from '../../Components/calendar/CalendarPreview/CoverPage'
 import BackPage from '../../Components/calendar/CalendarPreview/BackPage'
 import { listOfMonth } from '@/calendarData'
+import useCalendar from '@/Components/calendar/useCalendar'
 
 export default function Master()
 {
+    const { getSelectedCalendarData } = useCalendar()
     useEffect(() => {
         document.title = 'Create Calendar'
     }, [])
@@ -22,12 +24,17 @@ export default function Master()
         selectedMonth, 
         selectedYear, 
         setSelectedMonth,
-        setIsPreview
+        setIsPreview,
+        setSelectedPageSettings,
+        SelectedPageSettings
     } = useContext(calendarContext)
 
     const handleMonth = (direction) => {
+        setSelectedPageSettings(getSelectedCalendarData())
         if((+selectedMonth + direction) >= -1 && (+selectedMonth + direction) <= 12){
-            setSelectedMonth(+selectedMonth + direction)
+            setSelectedMonth(prevSelectedMonth => {
+                return prevSelectedMonth + direction
+            })
         }
     }
   

@@ -1,3 +1,4 @@
+import { cloneDeep } from 'lodash'
 let DemoImages = [
     'https://images.unsplash.com/photo-1665686308827-eb62e4f6604d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60',
     'https://images.unsplash.com/photo-1669702055322-4813687f30c7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60',
@@ -112,13 +113,16 @@ const languageList = ['English', 'French', 'Spanish']
 const yearList = []
 
 const defaultTextConfig = {
-    color: 'black',
-    backgroundColor: 'transparent',
+    backgroundColor: '#000000',
+    color: '#000000',
     textAlign: 'center',
     fontSize: '20px',
     fontWeight: 'bolder',
+    opacity: 0,
+    top: 0,
     radius: 0,
-    fontFamily: ''
+    fontFamily: '',
+    padding: null
 }
 
 const DemoImageListForCalendar = [
@@ -127,7 +131,7 @@ const DemoImageListForCalendar = [
         path: '', 
         text: {
             title: '',
-            style: defaultTextConfig
+            style: cloneDeep(defaultTextConfig)
         }
     },
     {
@@ -135,7 +139,7 @@ const DemoImageListForCalendar = [
         path: '', 
         text: {
             title: '',
-            style: defaultTextConfig
+            style: cloneDeep(defaultTextConfig)
         }
     },
     {
@@ -143,7 +147,7 @@ const DemoImageListForCalendar = [
         path: '', 
         text: {
             title: '',
-            style: defaultTextConfig
+            style: cloneDeep(defaultTextConfig)
         }
     },
     {
@@ -151,7 +155,7 @@ const DemoImageListForCalendar = [
         path: '', 
         text: {
             title: '',
-            style: defaultTextConfig
+            style: cloneDeep(defaultTextConfig)
         }
     },
     {
@@ -159,7 +163,7 @@ const DemoImageListForCalendar = [
         path: '', 
         text: {
             title: '',
-            style: defaultTextConfig
+            style: cloneDeep(defaultTextConfig)
         }
     },
     {
@@ -167,7 +171,7 @@ const DemoImageListForCalendar = [
         path: '', 
         text: {
             title: '',
-            style: defaultTextConfig
+            style: cloneDeep(defaultTextConfig)
         }
     },
     {
@@ -175,7 +179,7 @@ const DemoImageListForCalendar = [
         path: '', 
         text: {
             title: '',
-            style: defaultTextConfig
+            style: cloneDeep(defaultTextConfig)
         }
     },
     {
@@ -183,7 +187,7 @@ const DemoImageListForCalendar = [
         path: '', 
         text: {
             title: '',
-            style: defaultTextConfig
+            style: cloneDeep(defaultTextConfig)
         }
     },
     {
@@ -191,7 +195,7 @@ const DemoImageListForCalendar = [
         path: '', 
         text: {
             title: '',
-            style: defaultTextConfig
+            style: cloneDeep(defaultTextConfig)
         }
     },
     {
@@ -199,7 +203,7 @@ const DemoImageListForCalendar = [
         path: '', 
         text: {
             title: '',
-            style: defaultTextConfig
+            style: cloneDeep(defaultTextConfig)
         }
     },
     {
@@ -207,7 +211,7 @@ const DemoImageListForCalendar = [
         path: '', 
         text: {
             title: '',
-            style: defaultTextConfig
+            style: cloneDeep(defaultTextConfig)
         }
     },
     {
@@ -215,7 +219,7 @@ const DemoImageListForCalendar = [
         path: '', 
         text: {
             title: '',
-            style: defaultTextConfig
+            style: cloneDeep(defaultTextConfig)
         }
     },
     {
@@ -223,7 +227,7 @@ const DemoImageListForCalendar = [
         path: '', 
         text: {
             title: '',
-            style: defaultTextConfig
+            style: cloneDeep(defaultTextConfig)
         }
     },
     {
@@ -231,7 +235,7 @@ const DemoImageListForCalendar = [
         path: '', 
         text: {
             title: '',
-            style: defaultTextConfig
+            style: cloneDeep(defaultTextConfig)
         }
     },
 ]

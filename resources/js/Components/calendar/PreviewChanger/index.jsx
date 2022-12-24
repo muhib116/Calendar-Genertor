@@ -5,12 +5,15 @@ import CoverPage from '../CalendarPreview/CoverPage'
 import BackPage from '../CalendarPreview/BackPage'
 import CalendarPreview from '@/Components/calendar/CalendarPreview/index'
 import { listOfMonth } from '../../../calendarData'
+import useCalendar from '../useCalendar'
 
 
 const PreviewChanger = () => {
-  const { calendarImages, selectedYear, selectedMonth, calendarTheme, setSelectedMonth, language } = useContext(calendarContext)
+  const { calendarImages, selectedYear, selectedMonth, setSelectedPageSettings, setSelectedMonth, language } = useContext(calendarContext)
+  const { getSelectedCalendarData } = useCalendar()
   const handleMonth = (index) => {
     setSelectedMonth(index)
+    setSelectedPageSettings(getSelectedCalendarData())
   }
 
   return (

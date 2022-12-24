@@ -19,9 +19,10 @@ const CalendarPreview = ({ img, style={}, selectedMonth, selectedYear }) =>
   })
 
   return (
-    <div className={ [classes.wrapper, 'h-full'].join(' ') } ref={ calendarContainer }>
-      <div className={ [classes.calendar, 'shadow h-full'].join(' ') }>
-        <div className={ [classes.image, 'relative'].join(' ') }>
+    <div className={ [classes.wrapper, 'h-full'].join(' ') } ref={ calendarContainer } style={style}>
+      <div className={ [classes.calendar, 'shadow h-full relative'].join(' ') }>
+        <MoveableBox style={ get(img, 'text.style') } title={ get(img, 'text.title') } />
+        <div className={ [classes.image].join(' ') }>
           {
             img && img.path != '' &&
             <img 
@@ -29,11 +30,6 @@ const CalendarPreview = ({ img, style={}, selectedMonth, selectedYear }) =>
               src={ img.path }
               alt=""
             />
-          }
-
-          {
-            img &&
-            <MoveableBox style={ get(img, 'text.style') } title={ get(img, 'text.title') } />
           }
         </div>
 
