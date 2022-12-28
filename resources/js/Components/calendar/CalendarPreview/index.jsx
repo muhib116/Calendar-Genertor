@@ -20,7 +20,7 @@ const CalendarPreview = ({ img, style={}, selectedMonth, selectedYear }) =>
 
   return (
     <div className={ [classes.wrapper, 'h-full'].join(' ') } ref={ calendarContainer } style={style}>
-      <div className={ [classes.calendar, 'shadow h-full relative'].join(' ') }>
+      <div className={ [classes.calendar, 'shadow h-full relative'].join(' ') } id='calendar_main_wrapper'>
         <MoveableBox style={ get(img, 'text.style') } title={ get(img, 'text.title') } />
         <div className={ [classes.image].join(' ') }>
           {

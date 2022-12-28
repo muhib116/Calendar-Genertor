@@ -5,7 +5,7 @@ import { get } from 'lodash'
 export default function CoverPage({ img, style }) {
   return (
     <div style={ style && style } className={ [classes.cover_photo, classes.wrapper, 'h-full relative'].join(' ') }>
-      <div className={ [classes.calendar, 'shadow h-full'].join(' ') }>
+      <div className={ [classes.calendar, 'shadow h-full'].join(' ') } id='calendar_main_wrapper'>
         {
           img && img.path != '' &&
           <img 

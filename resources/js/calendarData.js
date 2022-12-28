@@ -113,24 +113,22 @@ const languageList = ['English', 'French', 'Spanish']
 const yearList = []
 
 const defaultTextConfig = {
-    backgroundColor: '#000000',
     color: '#000000',
     textAlign: 'center',
-    fontSize: '20px',
+    fontSize: 20,
     fontWeight: 'bolder',
-    opacity: 0,
-    top: 0,
-    radius: 0,
     fontFamily: '',
-    padding: null
+    textDecoration: 'none',
 }
+
+const sampleTitle = 'Sample text'
 
 const DemoImageListForCalendar = [
     {
         name: 'cover', 
         path: '', 
         text: {
-            title: '',
+            title: sampleTitle,
             style: cloneDeep(defaultTextConfig)
         }
     },
@@ -138,7 +136,7 @@ const DemoImageListForCalendar = [
         name: 'January', 
         path: '', 
         text: {
-            title: '',
+            title: sampleTitle,
             style: cloneDeep(defaultTextConfig)
         }
     },
@@ -146,7 +144,7 @@ const DemoImageListForCalendar = [
         name: 'February', 
         path: '', 
         text: {
-            title: '',
+            title: sampleTitle,
             style: cloneDeep(defaultTextConfig)
         }
     },
@@ -154,7 +152,7 @@ const DemoImageListForCalendar = [
         name: 'March', 
         path: '', 
         text: {
-            title: '',
+            title: sampleTitle,
             style: cloneDeep(defaultTextConfig)
         }
     },
@@ -162,7 +160,7 @@ const DemoImageListForCalendar = [
         name: 'April', 
         path: '', 
         text: {
-            title: '',
+            title: sampleTitle,
             style: cloneDeep(defaultTextConfig)
         }
     },
@@ -170,7 +168,7 @@ const DemoImageListForCalendar = [
         name: 'May', 
         path: '', 
         text: {
-            title: '',
+            title: sampleTitle,
             style: cloneDeep(defaultTextConfig)
         }
     },
@@ -178,7 +176,7 @@ const DemoImageListForCalendar = [
         name: 'June', 
         path: '', 
         text: {
-            title: '',
+            title: sampleTitle,
             style: cloneDeep(defaultTextConfig)
         }
     },
@@ -186,7 +184,7 @@ const DemoImageListForCalendar = [
         name: 'July', 
         path: '', 
         text: {
-            title: '',
+            title: sampleTitle,
             style: cloneDeep(defaultTextConfig)
         }
     },
@@ -194,7 +192,7 @@ const DemoImageListForCalendar = [
         name: 'August', 
         path: '', 
         text: {
-            title: '',
+            title: sampleTitle,
             style: cloneDeep(defaultTextConfig)
         }
     },
@@ -202,7 +200,7 @@ const DemoImageListForCalendar = [
         name: 'September', 
         path: '', 
         text: {
-            title: '',
+            title: sampleTitle,
             style: cloneDeep(defaultTextConfig)
         }
     },
@@ -210,7 +208,7 @@ const DemoImageListForCalendar = [
         name: 'October', 
         path: '', 
         text: {
-            title: '',
+            title: sampleTitle,
             style: cloneDeep(defaultTextConfig)
         }
     },
@@ -218,7 +216,7 @@ const DemoImageListForCalendar = [
         name: 'November', 
         path: '', 
         text: {
-            title: '',
+            title: sampleTitle,
             style: cloneDeep(defaultTextConfig)
         }
     },
@@ -226,7 +224,7 @@ const DemoImageListForCalendar = [
         name: 'December', 
         path: '', 
         text: {
-            title: '',
+            title: sampleTitle,
             style: cloneDeep(defaultTextConfig)
         }
     },
@@ -234,7 +232,7 @@ const DemoImageListForCalendar = [
         name: 'back', 
         path: '', 
         text: {
-            title: '',
+            title: sampleTitle,
             style: cloneDeep(defaultTextConfig)
         }
     },

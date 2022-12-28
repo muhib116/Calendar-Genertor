@@ -14,7 +14,7 @@ export default function useTextConfig()
         return monthName ? monthName : pageName      
     }
 
-    const handleText = (target) => {
+    const handleText = (target) => {    
         setCalendarImages(prevState => {
             return (prevState.map(item => {       
                 if(item.name == getPageName()){

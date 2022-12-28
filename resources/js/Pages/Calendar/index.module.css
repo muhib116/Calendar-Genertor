@@ -3,7 +3,7 @@
 }
 .main_content{
     display: grid;
-    grid-template-rows: 1fr 160px;
+    grid-template-rows: 1fr 180px;
 }
 
 .leftSidebarAndMainContent{

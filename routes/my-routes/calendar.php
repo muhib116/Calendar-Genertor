@@ -6,7 +6,7 @@ use Inertia\Inertia;
 use App\Models\Calendar;
 
 Route::get('/', function () {
-    return Inertia::render('Calendar/create');
+    return Redirect::route('calendar');
 })->middleware(['auth', 'verified'])->name('calendar');
 
 Route::get('/calendar/create', function () {

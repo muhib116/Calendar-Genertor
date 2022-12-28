@@ -1,8 +1,9 @@
 import React, { useEffect, useContext } from 'react'
 import calendarContext from "@/context/calendarContext"
 import useTextConfig from '@/Components/useTextConfig.js'
+import InputFontSize from './InputFontSize'
 
-export default function TextConfig() {    
+export default function TextConfig() {
     const { 
         calendarImages
     } = useContext(calendarContext)
@@ -15,25 +16,9 @@ export default function TextConfig() {
 
     return (
         <div className='grid gap-3'>
-            <label className='grid gap-2'>
-                <span className="font-semibold">Title</span>
-                <input 
-                    type='text' 
-                    name='title'
-                    value={
-                        calendarImages.find(item => {
-                            return (item.name == getPageName()) && item
-                        }).text.title
-                    }
-                    onInput={ handleInput } 
-                    className='bg-transparent rounded border border-gray-400 border-opacity-50 px-4 py-2' 
-                    placeholder='Enter your title' 
-                />
-            </label>
-
-            <div className="flex gap-4 items-center">
+            <div className="flex gap-4">
                 <label className='flex items-center gap-2'>
-                    <span className="font-semibold">Text Color</span>
+                    {/* <span className="font-semibold">Text Color</span> */}
                     <input 
                         type='color' 
                         name='color'
@@ -47,186 +32,78 @@ export default function TextConfig() {
                         placeholder='Enter your title' 
                     />
                 </label>
-                <label className='flex items-center gap-2'>
-                    <span className="font-semibold">Background</span>
-                    <input 
-                        type='color' 
-                        name='backgroundColor'
-                        value={
-                            calendarImages.find(item => {
-                                return (item.name == getPageName()) && item
-                            }).text.style.backgroundColor
-                        }
-                        onInput={ handleInput } 
-                        className='bg-transparent rounded border border-gray-400 border-opacity-50 px-1' 
-                        placeholder='Enter your title' 
-                    />
-                </label>
-            </div>
 
-            <span className="font-semibold">Padding</span>
-            <div className="flex gap-4 items-center">
                 <label className='grid items-center gap-2'>
-                    <span className="text-xs">Top</span>
-                    <input 
-                        type='number' 
-                        name='paddingTop' 
+                    {/* <span className="font-semibold">Text Align</span> */}
+                    <select 
+                        name='textAlign' 
                         value={
                             calendarImages.find(item => {
                                 return (item.name == getPageName()) && item
-                            }).text.style.paddingTop
+                            }).text.style.textAlign
                         }
-                        min='0' 
                         onInput={ handleInput } 
-                        className='bg-transparent rounded border w-16 border-gray-400 border-opacity-50 py-0 px-1'
-                    />
+                        className='bg-transparent rounded border border-gray-400 border-opacity-50 px-3 py-0 w-[100px]'
+                    >
+                        <option value={null}>-select-</option>
+                        <option value="left">Left</option>
+                        <option value="center">Center</option>
+                        <option value="right">Right</option>
+                    </select>
                 </label>
+
                 <label className='grid items-center gap-2'>
-                    <span className="text-xs">Right</span>
-                    <input 
-                        type='number' 
-                        name='paddingRight' 
-                        value={
-                            calendarImages.find(item => {
-                                return (item.name == getPageName()) && item
-                            }).text.style.paddingRight
-                        }
-                        min='0' 
-                        onInput={ handleInput } 
-                        className='bg-transparent rounded border w-16 border-gray-400 border-opacity-50 py-0 px-1'
-                    />
-                </label>
-                <label className='grid items-center gap-2'>
-                    <span className="text-xs">Bottom</span>
-                    <input 
-                        type='number' 
-                        name='paddingBottom' 
-                        value={
-                            calendarImages.find(item => {
-                                return (item.name == getPageName()) && item
-                            }).text.style.paddingBottom
-                        }
-                        min='0' 
-                        onInput={ handleInput } 
-                        className='bg-transparent rounded border w-16 border-gray-400 border-opacity-50 py-0 px-1' 
-                    />
-                </label>
-                <label className='grid items-center gap-2'>
-                    <span className="text-xs">Left</span>
-                    <input 
-                        type='number' 
-                        name='paddingLeft' 
-                        value={
-                            calendarImages.find(item => {
-                                return (item.name == getPageName()) && item
-                            }).text.style.paddingLeft
-                        }
-                        min='0' 
-                        onInput={ handleInput } 
-                        className='bg-transparent rounded border w-16 border-gray-400 border-opacity-50 py-0 px-1' 
-                    />
+                    {/* <span className="font-semibold">Font Size</span> */}
+                    <InputFontSize />
                 </label>
             </div>
 
 
-            <label className='grid items-center gap-2'>
-                <span className="font-semibold">Opacity</span>
-                <input 
-                    type='range' 
-                    name='opacity' 
-                    value={
-                        calendarImages.find(item => {
-                            return (item.name == getPageName()) && item
-                        }).text.style.opacity
-                    }
-                    onInput={ handleInput } 
-                    min='0' 
-                    max='1' 
-                    step='any' 
-                    className='bg-transparent rounded border border-gray-400 border-opacity-50 px-4' 
-                />
-            </label>
 
-            <label className='grid items-center gap-2'>
-                <span className="font-semibold">Top Position</span>
-                <input 
-                    type='number' 
-                    name='top' 
-                    value={
-                        calendarImages.find(item => {
-                            return (item.name == getPageName()) && item
-                        }).text.style.top
-                    }
-                    onInput={ handleInput } 
-                    className='bg-transparent rounded border border-gray-400 border-opacity-50 px-4' 
-                />
-            </label>
 
-            <label className='grid items-center gap-2'>
-                <span className="font-semibold">Text Align</span>
-                <select 
-                    name='textAlign' 
-                    value={
-                        calendarImages.find(item => {
-                            return (item.name == getPageName()) && item
-                        }).text.style.textAlign
-                    }
-                    onInput={ handleInput } 
-                    className='bg-transparent rounded border border-gray-400 border-opacity-50 px-4'
-                >
-                    <option value={null}>-select-</option>
-                    <option value="left">Left</option>
-                    <option value="center">Center</option>
-                    <option value="right">Right</option>
-                </select>
-            </label>
+            <div className="grid grid-cols-2 gap-4">
+                <label className='grid items-center gap-2'>
+                    <span className="font-semibold text-sm">Font Weight</span>
+                    <select 
+                        name='fontWeight' 
+                        value={
+                            calendarImages.find(item => {
+                                return (item.name == getPageName()) && item
+                            }).text.style.fontWeight
+                        }
+                        onInput={ handleInput } 
+                        className='bg-transparent rounded border border-gray-400 border-opacity-50 px-4 py-0 text-sm'
+                    >
+                        <option selected value={null}>-select-</option>
+                        <option value="400">400</option>
+                        <option value="500">500</option>
+                        <option value="600">600</option>
+                        <option value="700">700</option>
+                        <option value="800">800</option>
+                        <option value="900">900</option>
+                    </select>
+                </label>
 
-            <label className='grid items-center gap-2'>
-                <span className="font-semibold">Font Size</span>
-                <input 
-                    type='number' 
-                    name='fontSize' 
-                    value={
-                        calendarImages.find(item => {
-                            return (item.name == getPageName()) && item
-                        }).text.style.fontSize
-                    }
-                    onInput={ handleInput } 
-                    min='16' 
-                    className='bg-transparent rounded border border-gray-400 border-opacity-50 px-4' 
-                    placeholder='Font size in px' 
-                />
-            </label>
+                <label className='grid items-center gap-2'>
+                    <span className="font-semibold text-sm">Text Decoration</span>
+                    <select 
+                        name='textDecoration' 
+                        value={
+                            calendarImages.find(item => {
+                                return (item.name == getPageName()) && item
+                            }).text.style.textDecoration
+                        } 
+                        onInput={ handleInput } 
+                        className='bg-transparent rounded border border-gray-400 border-opacity-50 px-4 py-0 text-sm'
+                    >
+                        <option value={ null }>-select-</option>
+                        <option value="none">None</option>
+                        <option value="underline">Under Line</option>
+                        <option value="overline">Over Line</option>
+                    </select>
+                </label>
+            </div>
 
-            <label className='grid items-center gap-2'>
-                <span className="font-semibold">Font Weight</span>
-                <select 
-                    name='fontWeight' 
-                    value={
-                        calendarImages.find(item => {
-                            return (item.name == getPageName()) && item
-                        }).text.style.fontWeight
-                    }
-                    onInput={ handleInput } 
-                    className='bg-transparent rounded border border-gray-400 border-opacity-50 px-4'
-                >
-                    <option value={null}>-select-</option>
-                    <option value="400">400</option>
-                    <option value="500">500</option>
-                    <option value="600">600</option>
-                    <option value="700">700</option>
-                    <option value="800">800</option>
-                    <option value="900">900</option>
-                </select>
-            </label>
-
-            {/* <label className='grid items-center gap-2'>
-                <span className="font-semibold">Font Weight</span>
-                <select className='bg-transparent rounded border border-gray-400 border-opacity-50 px-4'>
-                    <option value={null}>-select-</option>
-                    <option value="400">400</option>
-                </select>
-            </label> */}
             
         </div>
     )
