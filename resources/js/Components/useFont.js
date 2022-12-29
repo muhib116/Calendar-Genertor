@@ -7,7 +7,7 @@ export default function useFont() {
                 400
             ],
             link: 'https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&display=swap',
-            isSelected: true,
+            isSelected: false,
             isItalic: false
         },
         {
@@ -277,6 +277,342 @@ export default function useFont() {
                 400
             ],
             link: 'https://fonts.googleapis.com/css2?family=Antic+Didone&display=swap',
+            isSelected: false,
+            isItalic: false
+        },
+
+
+
+
+
+        {
+            fontFamily: "'Anton', sans-serif",
+            title: "Anton ",
+            fontWeight: [
+                400
+            ],
+            link: 'https://fonts.googleapis.com/css2?family=Anton&display=swap',
+            isSelected: false,
+            isItalic: false
+        },
+        {
+            fontFamily: "'Arapey', serif",
+            title: "Arapey ",
+            fontWeight: [
+                400
+            ],
+            link: 'https://fonts.googleapis.com/css2?family=Arapey&display=swap',
+            isSelected: false,
+            isItalic: false
+        },
+        {
+            fontFamily: "'Arbutus Slab', serif",
+            title: "Arbutus Slab ",
+            fontWeight: [
+                400
+            ],
+            link: 'https://fonts.googleapis.com/css2?family=Arapey&display=swap',
+            isSelected: false,
+            isItalic: false
+        },
+        {
+            fontFamily: "'Architects Daughter', cursive",
+            title: "Architects Daughter",
+            fontWeight: [
+                400
+            ],
+            link: 'https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap',
+            isSelected: false,
+            isItalic: false
+        },
+        {
+            fontFamily: "'Archivo Black', sans-serif",
+            title: "Archivo Black",
+            fontWeight: [
+                400
+            ],
+            link: 'https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap',
+            isSelected: false,
+            isItalic: false
+        },
+        {
+            fontFamily: "'Arima Madurai', cursive",
+            title: "Arima Madurai Bold",
+            fontWeight: [
+                700
+            ],
+            link: 'https://fonts.googleapis.com/css2?family=Arima+Madurai:wght@400;700&display=swap',
+            isSelected: false,
+            isItalic: false
+        },
+        {
+            fontFamily: "'Arima Madurai', cursive",
+            title: "Arima Madurai",
+            fontWeight: [
+                400
+            ],
+            link: 'https://fonts.googleapis.com/css2?family=Arima+Madurai:wght@400;700&display=swap',
+            isSelected: false,
+            isItalic: false
+        },
+        {
+            fontFamily: "'Arimo', sans-serif",
+            title: "Arimo Bold",
+            fontWeight: [
+                700
+            ],
+            link: 'https://fonts.googleapis.com/css2?family=Arimo:wght@400;700&display=swap',
+            isSelected: false,
+            isItalic: false
+        },
+        {
+            fontFamily: "'Arvo', serif",
+            title: "Arvo Bold",
+            fontWeight: [
+                700
+            ],
+            link: 'https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&display=swap',
+            isSelected: false,
+            isItalic: false
+        },
+        {
+            fontFamily: "'Arvo', serif",
+            title: "Arvo",
+            fontWeight: [
+                400
+            ],
+            link: 'https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&display=swap',
+            isSelected: false,
+            isItalic: false
+        },
+        {
+            fontFamily: "'Asap', sans-serif",
+            title: "Asap",
+            fontWeight: [
+                400
+            ],
+            link: 'https://fonts.googleapis.com/css2?family=Asap&display=swap',
+            isSelected: false,
+            isItalic: false
+        },
+        {
+            fontFamily: "'Asset', cursive",
+            title: "Asset",
+            fontWeight: [
+                400
+            ],
+            link: 'https://fonts.googleapis.com/css2?family=Asset&display=swap',
+            isSelected: false,
+            isItalic: false
+        },
+        {
+            fontFamily: "'Assistant', sans-serif",
+            title: "Assistant Bold",
+            fontWeight: [
+                700
+            ],
+            link: 'https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;700&display=swap',
+            isSelected: false,
+            isItalic: false
+        },
+        {
+            fontFamily: "'Assistant', sans-serif",
+            title: "Assistant Light",
+            fontWeight: [
+                300
+            ],
+            link: 'https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;700&display=swap',
+            isSelected: false,
+            isItalic: false
+        },
+        {
+            fontFamily: "'Assistant', sans-serif",
+            title: "Assistant",
+            fontWeight: [
+                400
+            ],
+            link: 'https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;700&display=swap',
+            isSelected: false,
+            isItalic: false
+        },
+        {
+            fontFamily: "'Athiti', sans-serif",
+            title: "Athiti Bold",
+            fontWeight: [
+                700
+            ],
+            link: 'https://fonts.googleapis.com/css2?family=Athiti:wght@300;400;700&display=swap',
+            isSelected: false,
+            isItalic: false
+        },
+        {
+            fontFamily: "'Athiti', sans-serif",
+            title: "Athiti Light",
+            fontWeight: [
+                300
+            ],
+            link: 'https://fonts.googleapis.com/css2?family=Athiti:wght@300;400;700&display=swap',
+            isSelected: false,
+            isItalic: false
+        },
+        {
+            fontFamily: "'Athiti', sans-serif",
+            title: "Athiti Light",
+            fontWeight: [
+                400
+            ],
+            link: 'https://fonts.googleapis.com/css2?family=Athiti:wght@300;400;700&display=swap',
+            isSelected: false,
+            isItalic: false
+        },      
+        {
+            fontFamily: "'Atma', cursive",
+            title: "Atma Bold",
+            fontWeight: [
+                700
+            ],
+            link: 'https://fonts.googleapis.com/css2?family=Atma:wght@300;400;700&display=swap',
+            isSelected: false,
+            isItalic: false
+        },
+        {
+            fontFamily: "'Atma', cursive",
+            title: "Atma Light",
+            fontWeight: [
+                300
+            ],
+            link: 'https://fonts.googleapis.com/css2?family=Atma:wght@300;400;700&display=swap',
+            isSelected: false,
+            isItalic: false
+        },     
+        {
+            fontFamily: "'Bad Script', cursive",
+            title: "Bad Script",
+            fontWeight: [
+                400
+            ],
+            link: 'https://fonts.googleapis.com/css2?family=Bad+Script&display=swap',
+            isSelected: false,
+            isItalic: false
+        },
+        {
+            fontFamily: "'Bangers', cursive",
+            title: "Bangers",
+            fontWeight: [
+                400
+            ],
+            link: 'https://fonts.googleapis.com/css2?family=Bangers&display=swap',
+            isSelected: false,
+            isItalic: false
+        },
+       
+        {
+            fontFamily: "'Bebas Neue', cursive",
+            title: "Bebas Neue",
+            fontWeight: [
+                400
+            ],
+            link: 'https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap',
+            isSelected: false,
+            isItalic: false
+        },
+        {
+            fontFamily: "'Belgrano', serif",
+            title: "Belgrano",
+            fontWeight: [
+                400
+            ],
+            link: 'https://fonts.googleapis.com/css2?family=Belgrano&display=swap',
+            isSelected: false,
+            isItalic: false
+        },
+        {
+            fontFamily: "'Belleza', sans-serif",
+            title: "Belleza",
+            fontWeight: [
+                400
+            ],
+            link: 'https://fonts.googleapis.com/css2?family=Belleza&display=swap',
+            isSelected: false,
+            isItalic: false
+        },
+        {
+            fontFamily: "'Bentham', serif",
+            title: "Bentham",
+            fontWeight: [
+                400
+            ],
+            link: 'https://fonts.googleapis.com/css2?family=Bentham&display=swap',
+            isSelected: false,
+            isItalic: false
+        },
+        {
+            fontFamily: "'Berkshire Swash', cursive",
+            title: "Berkshire Swash",
+            fontWeight: [
+                400
+            ],
+            link: 'https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap',
+            isSelected: false,
+            isItalic: false
+        },
+        {
+            fontFamily: "'Beau Rivage', cursive",
+            title: "Beau Rivage",
+            fontWeight: [
+                400
+            ],
+            link: 'https://fonts.googleapis.com/css2?family=Beau+Rivage&display=swap',
+            isSelected: false,
+            isItalic: false
+        },
+        {
+            fontFamily: "'Bevan', cursive",
+            title: "Bevan ",
+            fontWeight: [
+                400
+            ],
+            link: 'https://fonts.googleapis.com/css2?family=Bevan&display=swap',
+            isSelected: false,
+            isItalic: false
+        },
+        {
+            fontFamily: "'Bitter', serif",
+            title: "Bitter Bold ",
+            fontWeight: [
+                700
+            ],
+            link: 'https://fonts.googleapis.com/css2?family=Bitter:wght@300;400;700&display=swap',
+            isSelected: false,
+            isItalic: false
+        },
+        {
+            fontFamily: "'Bitter', serif",
+            title: "Bitter Light ",
+            fontWeight: [
+                300
+            ],
+            link: 'https://fonts.googleapis.com/css2?family=Bitter:wght@300;400;700&display=swap',
+            isSelected: false,
+            isItalic: false
+        },
+        {
+            fontFamily: "'Bitter', serif",
+            title: "Bitter",
+            fontWeight: [
+                400
+            ],
+            link: 'https://fonts.googleapis.com/css2?family=Bitter:wght@300;400;700&display=swap',
+            isSelected: false,
+            isItalic: false
+        },
+        {
+            fontFamily: "'Black Ops One', cursive",
+            title: "Black Ops One",
+            fontWeight: [
+                400
+            ],
+            link: 'https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap',
             isSelected: false,
             isItalic: false
         },

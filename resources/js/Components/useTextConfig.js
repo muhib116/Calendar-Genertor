@@ -43,16 +43,29 @@ export default function useTextConfig()
     }
 
     const setPosition = (e, dragData) => {
-      const { x, y } = dragData
-      setCalendarImages(prevState => {
-        return (prevState.map(item => {       
-            if(item.name == getPageName()){
-                item.text.style.x = x
-                item.text.style.y = y
-            }
-            return item
-        }))
-    })
+        const { x, y } = dragData
+        setCalendarImages(prevState => {
+            return (prevState.map(item => {       
+                if(item.name == getPageName()){
+                    item.text.style.x = x
+                    item.text.style.y = y
+                }
+                return item
+            }))
+        })
+    }
+
+    const setDefaultText = () => {
+        setCalendarImages(prevState => {
+            return (prevState.map(item => {       
+                if(item.name == getPageName()){
+                    if(!item.text.title){
+                        item.text.title = 'Sample Text'
+                    }
+                }
+                return item
+            }))
+        })
     }
 
     return {
@@ -62,6 +75,7 @@ export default function useTextConfig()
         FilteredImageData,
         getPageName,
         handleFontFamily,
-        setPosition
+        setPosition,
+        setDefaultText
     }
 }

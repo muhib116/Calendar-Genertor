@@ -4,12 +4,14 @@ import useCalendar from "../useCalendar"
 import fileLibraryIcon from '../../../assets/icons/file-library.png'
 import addTextIcon from '../../../assets/icons/text-add.png'
 import settingsIcon from '../../../assets/icons/settings.png'
+import useTextConfig from '@/Components/useTextConfig.js'
 import { Link } from "@inertiajs/inertia-react"
 
 
 export default function Navigation({ page }) {
   const { isCalendarEditable, setIsPreview, isPreview, setLeftSideComponentName } = useContext(calendarContext)
   const { saveCalendar, updateCalendar } = useCalendar()
+  const { setDefaultText } = useTextConfig()
 
   const handlePreview = () => {
     setIsPreview(!isPreview)
@@ -30,7 +32,13 @@ export default function Navigation({ page }) {
               <img src={ fileLibraryIcon } className={ ['w-5 h-5 block'] } alt="" />
               My Files
             </button>
-            <button onClick={ () => setLeftSideComponentName('TextConfig') } className="flex gap-2 items-center font-semibold">
+            <button 
+              onClick={ () => {
+                setLeftSideComponentName('TextConfig') 
+                setDefaultText()
+              }}
+              className="flex gap-2 items-center font-semibold"
+            >
               <img src={ addTextIcon } className={ ['w-5 h-5 block'] } alt="" />
               Add Text
             </button>

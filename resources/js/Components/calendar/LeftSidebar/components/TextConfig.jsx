@@ -30,8 +30,10 @@ export default function TextConfig() {
         FilteredFont.forEach(item => item.isSelected = item.title == title)
     }
 
+    const [ShowFont, setShowFont] = useState(false)
+
     return (
-        <div className='grid gap-3'>
+        <div className='grid gap-3 py-4'>
             <div className="grid grid-cols-2 gap-4">
                 <label className='flex items-center gap-2'>
                     {/* <span className="font-semibold">Text Color</span> */}
@@ -98,35 +100,42 @@ export default function TextConfig() {
 
 
             {/* fonts start */}
-            <div className='grid items-center gap-2'>
-                <span className="font-semibold text-sm">Select Font</span>
-                <div className="fonts_wrapper">
-                    <div className="search">
-                        <input type="search" onInput={ handleFilter } placeholder='Search' className='py-1 px-4 block w-full border border-gray-200 mb-4' />
-                    </div>
-                    <div className="body h-[800px] overflow-y-auto">
-                        {
-                            FilteredFont.map(font => (
-                                font.fontWeight.map(weight => (
-                                    <div 
-                                        key={ font.title+'-'+weight } 
-                                        style={{ fontFamily: font.fontFamily, fontWeight: weight }}
-                                        className={[
-                                            'px-4 py-2 border -mb-[1px] hover:bg-gray-100 cursor-pointer text-2xl',
-                                            font.isSelected && 'bg-gray-100'
-                                        ].join(' ')}
-                                        onClick={() => {
-                                            handleFontFamily(font.fontFamily, weight)
-                                            makeFontSelected(font.title, FilteredFont)
-                                        }}
-                                    >
-                                        { font.title }
-                                    </div>
+            <div className='grid items-center gap-2 mt-4'>
+                <span onClick={ () => setShowFont((prev) => !prev) } className="font-semibold text-sm border px-4 py-2 flex justify-between items-center cursor-pointer">
+                    Select Font
+                    <svg className='w-4 h-4' width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M4.219 10.781 2.78 12.22l12.5 12.5.719.687.719-.687 12.5-12.5-1.438-1.438L16 22.562Z"/></svg>
+                </span>
+                
+                {
+                    ShowFont && 
+                    <div className="fonts_wrapper" >
+                        <div className="search">
+                            <input type="search" onInput={ handleFilter } placeholder='Search' className='py-1 px-4 block w-full border border-gray-200 mb-4' />
+                        </div>
+                        <div className="body h-[680px] overflow-y-auto">
+                            {
+                                FilteredFont.map(font => (
+                                    font.fontWeight.map(weight => (
+                                        <div 
+                                            key={ font.title+'-'+weight } 
+                                            style={{ fontFamily: font.fontFamily, fontWeight: weight }}
+                                            className={[
+                                                'px-4 py-2 border -mb-[1px] hover:bg-gray-100 cursor-pointer text-2xl',
+                                                font.isSelected && 'bg-gray-100'
+                                            ].join(' ')}
+                                            onClick={() => {
+                                                handleFontFamily(font.fontFamily, weight)
+                                                makeFontSelected(font.title, FilteredFont)
+                                            }}
+                                        >
+                                            { font.title }
+                                        </div>
+                                    ))
                                 ))
-                            ))
-                        }
+                            }
+                        </div>
                     </div>
-                </div>
+                }
             </div>
             
         </div>

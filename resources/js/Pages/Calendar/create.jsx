@@ -8,17 +8,16 @@ import { useContext, useEffect } from 'react'
 import AngleIcon from '../../assets/icons/AngleIcon'
 import CoverPage from '../../Components/calendar/CalendarPreview/CoverPage'
 import BackPage from '../../Components/calendar/CalendarPreview/BackPage'
-import { listOfMonth } from '@/calendarData'
+import { listOfMonth, DemoImageListForCalendar } from '@/calendarData'
 import useCalendar from '@/Components/calendar/useCalendar'
+import { cloneDeep } from 'lodash'
 
 export default function Master()
 {
     const { getSelectedCalendarData } = useCalendar()
-    useEffect(() => {
-        document.title = 'Create Calendar'
-    }, [])
 
     const { 
+        setCalendarImages, 
         calendarImages, 
         isPreview, 
         selectedMonth, 
@@ -37,6 +36,11 @@ export default function Master()
             })
         }
     }
+
+    useEffect(() => {
+        document.title = 'Create Calendar'
+        setCalendarImages(cloneDeep(DemoImageListForCalendar))
+    }, [])
   
   return (
     <div className={ [classes.main_wrapper, 'grid items-start m-auto min-h-screen bg-slate-100'].join(' ') }>

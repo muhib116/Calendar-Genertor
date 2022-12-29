@@ -123,8 +123,7 @@ const defaultTextConfig = {
     y: 0
 }
 
-const sampleTitle = 'Sample text'
-
+const sampleTitle = ''
 const DemoImageListForCalendar = [
     {
         name: 'cover', 
