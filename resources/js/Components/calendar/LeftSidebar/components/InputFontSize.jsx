@@ -14,8 +14,8 @@ export default function InputFontSize() {
             return (prevState.map(item => {       
                 if(item.name == getPageName())
                 {
-                    if(item.text['style']['fontSize'] + direction>0){
-                        item.text['style']['fontSize'] += direction
+                    if(+(item.text['style']['fontSize']) + direction>0){
+                        item.text['style']['fontSize'] = +(item.text['style']['fontSize']) + direction
                     }
                 }
                 return item
@@ -29,7 +29,7 @@ export default function InputFontSize() {
         <span 
             type='text' 
             name='fontSize' 
-            className='bg-transparent text-center rounded border border-gray-400 border-opacity-50 px-2 w-[40px] py-0' 
+            className='bg-transparent text-center rounded border border-gray-400 border-opacity-50 px-2 w-[80px] py-0' 
         >
             {
                 calendarImages.find(item => {

@@ -6,6 +6,7 @@ import { usePage } from '@inertiajs/inertia-react'
 import { Inertia } from "@inertiajs/inertia"
 import { toast } from "react-toastify"
 import { DemoImageListForCalendar } from '@/calendarData.js'
+import axios from "axios"
 
 
 export default function useCalendar() 
@@ -149,7 +150,7 @@ export default function useCalendar()
             settings: calendarImages
         }
 
-        Inertia.post(route('calendar_update', data))
+        axios.post(`/edit-calendar/${serverData.id}/${auth.user.id}`, data)
         toast.success('Calendar Updated !', {
             position: "top-right",
             autoClose: 4000,

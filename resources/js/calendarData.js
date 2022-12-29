@@ -116,9 +116,11 @@ const defaultTextConfig = {
     color: '#000000',
     textAlign: 'center',
     fontSize: 20,
-    fontWeight: 'bolder',
+    fontWeight: '400',
     fontFamily: '',
     textDecoration: 'none',
+    x: 0,
+    y: 0
 }
 
 const sampleTitle = 'Sample text'

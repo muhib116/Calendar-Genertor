@@ -8,7 +8,6 @@ export default function Item({ calendar })
 {
     const [Price, setPrice] = useState(calendar.price)
     const getCoverPhoto = (settings, key) => {
-        console.log(settings)
         return settings.find(item => item.name == key)
     }
     const { updateCalendarPrice, deleteCalendar, makeCalendarSaleable } = useCalendar()
@@ -34,10 +33,11 @@ export default function Item({ calendar })
 
     return (
         <div className='flex gap-5 items-start'>
-            <div className='w-52 h-[330px]'>
+            <div className='w-52 h-[330px] relative'>
                 <Link href={ `calendar/edit/${calendar.id}` }>
                     {/* <CoverPage img={ calendarImages.length>0 ? calendarImages.find(item=>item.name == 'cover') : '' } /> */}
-                    <CoverPage style={{ width: '200px', height: 'auto' }} img={ getCoverPhoto(calendar.settings, 'cover') } />
+                    <CoverPage style={{ width: '200px', height: 'auto', pointerEvents: 'none' }} img={ getCoverPhoto(calendar.settings, 'cover') } />
+                    <h1>{ calendar.settings[0].text.title }</h1>
                 </Link>
             </div>
             <input type='number' value={ Price } min="0" onInput={ handlePrice } className='py-1 border-gray-300 bg-transparent' />

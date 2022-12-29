@@ -14,7 +14,7 @@ export default function useTextConfig()
         return monthName ? monthName : pageName      
     }
 
-    const handleText = (target) => {    
+    const handleText = (target) => {
         setCalendarImages(prevState => {
             return (prevState.map(item => {       
                 if(item.name == getPageName()){
@@ -30,11 +30,38 @@ export default function useTextConfig()
         })
     }
 
+    const handleFontFamily = (fontFamily, fontWeight) => {
+        setCalendarImages(prevState => {
+            return (prevState.map(item => {       
+                if(item.name == getPageName()){
+                    item.text.style.fontFamily = fontFamily
+                    item.text.style.fontWeight = fontWeight
+                }
+                return item
+            }))
+        })
+    }
+
+    const setPosition = (e, dragData) => {
+      const { x, y } = dragData
+      setCalendarImages(prevState => {
+        return (prevState.map(item => {       
+            if(item.name == getPageName()){
+                item.text.style.x = x
+                item.text.style.y = y
+            }
+            return item
+        }))
+    })
+    }
+
     return {
         handleText,
         calendarImages,
         setCalendarImages,
         FilteredImageData,
-        getPageName
+        getPageName,
+        handleFontFamily,
+        setPosition
     }
 }

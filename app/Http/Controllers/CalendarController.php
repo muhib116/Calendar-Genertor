@@ -50,9 +50,10 @@ class CalendarController extends Controller
         
         if(count($payload)){
             Calendar::where(['id' => $request->id])->where(['user_id' => $request->user_id])->update($payload);
+            return response()->json(['status' => true], 200);
         }
 
-        return \Redirect::back();
+        return response()->json(['status'=>false], 200);
     }
 
     function priceUpdate(Request $request) {
