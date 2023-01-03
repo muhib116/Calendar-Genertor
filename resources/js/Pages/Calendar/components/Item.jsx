@@ -40,7 +40,9 @@ export default function Item({ calendar })
                     <h1>{ calendar.settings[0].text.title }</h1>
                 </Link>
             </div>
-            <input type='number' value={ Price } min="0" onInput={ handlePrice } className='py-1 border-gray-300 bg-transparent' />
+            <label>
+                $ <input type='number' value={ Price } min="0" onInput={ handlePrice } className='py-1 border-gray-300 bg-transparent' />
+            </label>
             <div className="flex gap-4">
                 <button 
                     className='px-4 py-1 bg-green-500 rounded shadow'
@@ -65,7 +67,7 @@ export default function Item({ calendar })
                     }}
                 >
                     <input type="radio" name='saleable' checked={ calendar.is_salable } />
-                    Salable
+                    Move to profile
                 </label>
             </div>
         </div>

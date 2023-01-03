@@ -39,11 +39,10 @@ class fileUploadController extends Controller
 
     function mediaDelete($id, $user_id){
         $data = Medias::where(['id' => $id])->where(['user_id' => $user_id])->first();
-        
+        // delete database data
+        Medias::where(['id' => $id])->where(['user_id' => $user_id])->delete();
         if (File::exists(public_path($data->path))) {
             $status = File::delete(public_path($data->path));
-            // delete database data
-            Medias::where(['id' => $id])->where(['user_id' => $user_id])->delete();
             return response()->json($status);
         }
     }

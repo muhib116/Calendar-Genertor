@@ -9,7 +9,7 @@ import useCalendar from '../useCalendar'
 
 
 const PreviewChanger = () => {
-  const { calendarImages, selectedYear, selectedMonth, setSelectedPageSettings, setSelectedMonth, language } = useContext(calendarContext)
+  const { calendarImages, selectedYear, selectedMonth, setSelectedPageSettings, setSelectedMonth, language, isPreview } = useContext(calendarContext)
   const { getSelectedCalendarData } = useCalendar()
   const handleMonth = (index) => {
     setSelectedMonth(index)
@@ -17,14 +17,14 @@ const PreviewChanger = () => {
   }
 
   return (
-    <div className={[classes.wrapper, 'h-full flex gap-2  overflow-x-auto text-xs w-full'].join(' ')}>
+    <div className={[classes.wrapper, 'h-full flex gap-2  overflow-x-auto text-xs w-full', !isPreview && 'justify-center'].join(' ')}>
       <div 
         onClick={ () => handleMonth(-1) } 
         className={ ['cursor-pointer p-1 text-center grid items-end border rounded hover:shadow active:scale-95 min-w-[80px]',
           (selectedMonth === -1) && 'shadow scale-95 border-red-500'
         ].join(' ') }
       >
-        <div className='w-full h-[104px] overflow-hidden'>
+        <div className='w-full h-[100px] overflow-hidden'>
           <CoverPage 
             img={ calendarImages.length>0 ? calendarImages.find(item=>item.name == 'cover') : '' }
             style={{ 

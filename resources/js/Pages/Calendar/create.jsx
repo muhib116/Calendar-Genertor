@@ -11,9 +11,13 @@ import BackPage from '../../Components/calendar/CalendarPreview/BackPage'
 import { listOfMonth, DemoImageListForCalendar } from '@/calendarData'
 import useCalendar from '@/Components/calendar/useCalendar'
 import { cloneDeep } from 'lodash'
+import { usePage } from '@inertiajs/inertia-react'
+
+
 
 export default function Master()
 {
+    const { component } = usePage()
     const { getSelectedCalendarData } = useCalendar()
 
     const { 
@@ -64,7 +68,7 @@ export default function Master()
                 <div className={ [classes.main_preview, 'p-4 relative select-none'].join(' ') }>
                     
                     {
-                        !isPreview &&
+                        !isPreview && component != 'Calendar/edit' &&
                         <h1 onClick={ () => setIsPreview(!isPreview) } className='flex gap-2 cursor-pointer hover:text-green-500 w-fit'>
                             <svg width="24px" height="24px" viewBox="0 0 24 24" fill='currentColor'>
                                 <path d="M21 11H6.414l5.293-5.293-1.414-1.414L2.586 12l7.707 7.707 1.414-1.414L6.414 13H21z"/>
@@ -80,7 +84,7 @@ export default function Master()
 
                     <div className={[classes.calendar_container].join(' ')}>
                         {
-                            (selectedMonth === -1) &&
+                            (selectedMonth == -1) &&
                             <CoverPage img={ calendarImages.length>0 ? calendarImages.find(item=>item.name == 'cover') : '' } />
                         }
                         {
@@ -92,7 +96,7 @@ export default function Master()
                             />
                         }
                         {
-                            (selectedMonth === 12) &&
+                            (selectedMonth == 12) &&
                             <BackPage img={ calendarImages.length>0 ? calendarImages.find(item=>item.name == 'back') : '' } />
                         }
                     </div>

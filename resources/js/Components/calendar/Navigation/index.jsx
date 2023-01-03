@@ -6,9 +6,11 @@ import addTextIcon from '../../../assets/icons/text-add.png'
 import settingsIcon from '../../../assets/icons/settings.png'
 import useTextConfig from '@/Components/useTextConfig.js'
 import { Link } from "@inertiajs/inertia-react"
+import { usePage } from '@inertiajs/inertia-react'
 
 
 export default function Navigation({ page }) {
+  const { component } = usePage()
   const { isCalendarEditable, setIsPreview, isPreview, setLeftSideComponentName } = useContext(calendarContext)
   const { saveCalendar, updateCalendar } = useCalendar()
   const { setDefaultText } = useTextConfig()
@@ -48,15 +50,18 @@ export default function Navigation({ page }) {
 
 
       <div className='flex gap-4 items-center'>
-        <a href="#guid">Guid</a>
+        <a href="#guid">Guide</a>
         {
           page == 'calendar' &&
           <>
-            <button onClick={ handlePreview }>Preview</button>
+            {
+              component != 'Calendar/edit' &&
+              <button className={ [!isPreview && 'text-red-500'].join(' ') } onClick={ handlePreview }>Preview</button>
+            }
 
             {
               isCalendarEditable ?
-              <button onClick={ updateCalendar } className='bg-blue-500 text-white rounded-full shadow py-1 px-4'>Update</button>
+              ''// <button onClick={ updateCalendar } className='bg-blue-500 text-white rounded-full shadow py-1 px-4'>Update</button>
               :
               <button onClick={ saveCalendar } className='bg-green-500 text-white rounded-full shadow py-1 px-4'>Save</button>
             }
