@@ -241,7 +241,7 @@ const DemoImageListForCalendar = [
 
 
 // create year list start------
-let selectedYear = new Date().getFullYear()+1
+let selectedYear = new Date().getFullYear()
 let nextYearLimit = selectedYear + 17
 
 for(selectedYear; selectedYear <= nextYearLimit; selectedYear++){

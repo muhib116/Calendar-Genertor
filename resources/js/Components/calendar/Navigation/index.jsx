@@ -24,7 +24,7 @@ export default function Navigation({ page }) {
       <div className="flex gap-4">
 
         {
-          page == 'calendar' &&
+          route().current() == 'calendar' &&
           <>
             <button onClick={ () => setLeftSideComponentName('CalendarConfig') } className="flex gap-2 items-center font-semibold">
               <img src={ settingsIcon } className={ ['w-5 h-5 block'] } alt="" />
@@ -52,7 +52,7 @@ export default function Navigation({ page }) {
       <div className='flex gap-4 items-center'>
         <a href="#guid">Guide</a>
         {
-          page == 'calendar' &&
+          route().current() == 'calendar' &&
           <>
             {
               component != 'Calendar/edit' &&
@@ -60,21 +60,21 @@ export default function Navigation({ page }) {
             }
 
             {
-              isCalendarEditable ?
-              ''// <button onClick={ updateCalendar } className='bg-blue-500 text-white rounded-full shadow py-1 px-4'>Update</button>
-              :
+              !isCalendarEditable ?
               <button onClick={ saveCalendar } className='bg-green-500 text-white rounded-full shadow py-1 px-4'>Save</button>
+              :
+              ''
             }
           </>
         }
         {
-          (location.pathname != '/calendar/create') &&
+          (route().current() != 'calendar') &&
           <Link href={ route('calendar') }>Create</Link>
         }
 
         {
-          (location.pathname != 'calendars') &&
-          <Link href='/calendars'>My calenders</Link>
+          (location.pathname != 'talent/calendars') &&
+          <Link href={route('my_calendars')}>My calenders</Link>
         }
       </div>
     </div>
